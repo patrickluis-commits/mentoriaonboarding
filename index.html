@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentoria Clínica com IA 1:1 | Método IA Pro+</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="noise-overlay"></div>
+
+    <!-- Overlay para menu mobile -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Sidebar / Navegação -->
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">IA</span>
+                <div class="logo-text">
+                    <h1>Mentoria Clínica</h1>
+                    <p>Método IA Pro+</p>
+                </div>
+            </div>
+            <button class="close-menu" id="closeMenu" aria-label="Fechar menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home" class="nav-link active" data-section="home"><span class="nav-icon">🏠</span> Início</a></li>
+            <li><a href="#fluxo" class="nav-link" data-section="fluxo"><span class="nav-icon">🔄</span> Fluxo Operacional</a></li>
+            <li><a href="#questionario" class="nav-link" data-section="questionario"><span class="nav-icon">📝</span> Diagnóstico</a></li>
+            <li><a href="#ficha" class="nav-link" data-section="ficha"><span class="nav-icon">📊</span> Ficha Estratégica</a></li>
+            <li><a href="#kit" class="nav-link" data-section="kit"><span class="nav-icon">🎒</span> Kit Onboarding</a></li>
+            <li><a href="#trilha" class="nav-link" data-section="trilha"><span class="nav-icon">🗓️</span> Trilha 5 Dias</a></li>
+            <li><a href="#indicadores" class="nav-link" data-section="indicadores"><span class="nav-icon">📈</span> Indicadores</a></li>
+            <li><a href="#recursos" class="nav-link" data-section="recursos"><span class="nav-icon">🛠️</span> Recursos</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p>© 2026 clínica.IA</p>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+        <!-- Header Mobile -->
+        <header class="mobile-header">
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+            <div class="mobile-logo">
+                <span class="logo-icon">IA</span>
+                <span>Mentoria Clínica</span>
+            </div>
+            <div class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
+                <span class="theme-icon">🌙</span>
+            </div>
+        </header>
+
+        <!-- Desktop Header -->
+        <header class="desktop-header">
+            <h2 id="pageTitle">Início</h2>
+            <div class="header-actions">
+                <button class="btn-outline" id="btnResetar">↺ Resetar Dados</button>
+                <div class="theme-toggle" id="themeToggleDesktop" aria-label="Alternar tema">
+                    <span class="theme-icon">🌙</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Seção: Home -->
+        <section id="home" class="section active">
+            <div class="hero">
+                <div class="hero-badge">Método IA Pro+</div>
+                <h1 class="hero-title">Sistema de Onboarding da Mentoria Clínica com IA <span class="highlight">1:1</span></h1>
+                <p class="hero-subtitle">Diagnóstico inicial, personalização estratégica, aplicação prática com IA e acompanhamento com feedbacks contínuos.</p>
+                <div class="hero-stats">
+                    <div class="stat-card">
+                        <span class="stat-number">7</span>
+                        <span class="stat-label">Etapas do Onboarding</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Semanas de Mentoria</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">40</span>
+                        <span class="stat-label">Perguntas Diagnóstico</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Dias de Trilha</span>
+                    </div>
+                </div>
+                <div class="hero-actions">
+                    <a href="#questionario" class="btn-primary btn-large nav-link-sec" data-section="questionario">Iniciar Diagnóstico</a>
+                    <a href="#fluxo" class="btn-secondary btn-large nav-link-sec" data-section="fluxo">Ver Fluxo Completo</a>
+                </div>
+            </div>
+
+            <div class="section-grid">
+                <div class="info-card">
+                    <div class="info-icon">🎯</div>
+                    <h3>Finalidade Estratégica</h3>
+                    <p>O onboarding funciona como um <strong>sistema de aceleração da mentoria</strong>. Sua função é reduzir ruído, aumentar clareza, identificar o ponto de partida do mentorado e organizar um plano de execução personalizado desde o início.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">👤</div>
+                    <h3>Perfil do Mentor</h3>
+                    <p>Especialista em IA aplicada à prática profissional, com domínio de prompts, assistentes, fluxos, automações e uso estratégico de IA. Capacidade consultiva e didática para adaptar a tecnologia a diferentes nichos.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🧑‍⚕️</div>
+                    <h3>Público-Alvo</h3>
+                    <p>Profissionais da saúde, educadores, empreendedores e especialistas que desejam aplicar IA na rotina, automatizar processos, criar soluções e se posicionar com mais autoridade.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">📐</div>
+                    <h3>Metodologia</h3>
+                    <p>Baseada em quatro pilares: <strong>diagnóstico inicial</strong>, <strong>personalização estratégica</strong>, <strong>aplicação prática com IA</strong> e <strong>acompanhamento com feedbacks contínuos</strong>.</p>
+                </div>
+            </div>
+
+            <div class="objectives-section">
+                <h3 class="section-title">Objetivos Principais do Onboarding</h3>
+                <div class="objectives-grid">
+                    <div class="objective-item">
+                        <span class="obj-number">1</span>
+                        <div>
+                            <h4>Diagnosticar com Profundidade</h4>
+                            <p>Mapear perfil profissional, momento de carreira, maturidade digital e dores operacionais.</p>
+                        </div>
+                    </div>
+                    <div class="objective-item">
+                        <span class="obj-number">2</span>
+                        <div>
+                            <h4>Personalizar a Jornada</h4>
+                            <p>Transformar respostas em trilha individualizada com prioridades e metas práticas.</p>
+                        </div>
+                    </div>
+                    <div class="objective-item">
+                        <span class="obj-number">3</span>
+                        <div>
+                            <h4>Alinhar Expectativas</h4>
+                            <p>Clareza sobre entregas, papéis, ritmo dos encontros e resultados realistas.</p>
+                        </div>
+                    </div>
+                    <div class="objective-item">
+                        <span class="obj-number">4</span>
+                        <div>
+                            <h4>Preparar para Execução</h4>
+                            <p>Garantir acesso às ferramentas, organização de materiais e clareza sobre o projeto.</p>
+                        </div>
+                    </div>
+                    <div class="objective-item">
+                        <span class="obj-number">5</span>
+                        <div>
+                            <h4>Reduzir Fricção</h4>
+                            <p>Evitar que o mentorado chegue ao primeiro encontro sem contexto ou inseguro.</p>
+                        </div>
+                    </div>
+                    <div class="objective-item">
+                        <span class="obj-number">6</span>
+                        <div>
+                            <h4>Criar Base para Mensuração</h4>
+                            <p>Registrar marco zero para comparar evolução em produtividade e incorporação da IA.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Fluxo Operacional -->
+        <section id="fluxo" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Fluxo Operacional</h2>
+                <p class="section-desc">7 etapas estruturadas para um onboarding eficiente e completo.</p>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="fluxoProgress"></div>
+            </div>
+
+            <div class="fluxo-steps">
+                <div class="step-card" data-step="1">
+                    <div class="step-header">
+                        <span class="step-number">1</span>
+                        <div class="step-title-group">
+                            <h3>Confirmação e Boas-vindas</h3>
+                            <span class="step-time">⏱️ 1 dia</span>
+                        </div>
+                        <button class="step-toggle" aria-label="Expandir">▼</button>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-body">
+                            <p><strong>Objetivo:</strong> Receber o mentorado, transmitir segurança, profissionalismo e organização.</p>
+                            <div class="deliverables">
+                                <h4>Entregáveis:</h4>
+                                <ul class="checklist" data-checklist="step1">
+                                    <li><label class="check-item"><input type="checkbox"><span>Mensagem oficial de boas-vindas</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Apresentação breve da mentoria</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Explicação do fluxo do onboarding</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Link do questionário diagnóstico</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Orientações sobre prazo de resposta</span></label></li>
+                                </ul>
+                            </div>
+                            <div class="step-meta">
+                                <span class="tag">Canal: WhatsApp + E-mail</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card" data-step="2">
+                    <div class="step-header">
+                        <span class="step-number">2</span>
+                        <div class="step-title-group">
+                            <h3>Questionário de Diagnóstico Inicial</h3>
+                            <span class="step-time">⏱️ 20-40 min</span>
+                        </div>
+                        <button class="step-toggle" aria-label="Expandir">▼</button>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-body">
+                            <p><strong>Objetivo:</strong> Captar contexto profissional, dores, objetivos, prontidão e potencial de aplicação.</p>
+                            <div class="blocos-grid">
+                                <div class="bloco-tag">A. Identificação</div>
+                                <div class="bloco-tag">B. Momento Profissional</div>
+                                <div class="bloco-tag">C. Relação com Tecnologia</div>
+                                <div class="bloco-tag">D. Objetivos</div>
+                                <div class="bloco-tag">E. Aplicações Desejadas</div>
+                                <div class="bloco-tag">F. Posicionamento</div>
+                                <div class="bloco-tag">G. Estrutura Atual</div>
+                                <div class="bloco-tag">H. Expectativas</div>
+                                <div class="bloco-tag">I. Materiais</div>
+                            </div>
+                            <div class="step-actions">
+                                <a href="#questionario" class="btn-primary nav-link-sec" data-section="questionario">Acessar Questionário</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card" data-step="3">
+                    <div class="step-header">
+                        <span class="step-number">3</span>
+                        <div class="step-title-group">
+                            <h3>Análise Estratégica do Diagnóstico</h3>
+                            <span class="step-time">⏱️ 30-60 min</span>
+                        </div>
+                        <button class="step-toggle" aria-label="Expandir">▼</button>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-body">
+                            <p><strong>Objetivo:</strong> Converter respostas em inteligência acionável.</p>
+                            <div class="deliverables">
+                                <h4>Análise do Mentor:</h4>
+                                <ul class="checklist" data-checklist="step3">
+                                    <li><label class="check-item"><input type="checkbox"><span>Nível de maturidade em IA do mentorado</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Grau de clareza do objetivo</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Principais dores operacionais</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Oportunidades de ganho rápido</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Ferramentas prioritárias</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Riscos de desalinhamento</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Proposta de trilha personalizada</span></label></li>
+                                </ul>
+                            </div>
+                            <div class="step-actions">
+                                <a href="#ficha" class="btn-primary nav-link-sec" data-section="ficha">Montar Ficha Estratégica</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card" data-step="4">
+                    <div class="step-header">
+                        <span class="step-number">4</span>
+                        <div class="step-title-group">
+                            <h3>Reunião de Kickoff Estratégico</h3>
+                            <span class="step-time">⏱️ 60-90 min</span>
+                        </div>
+                        <button class="step-toggle" aria-label="Expandir">▼</button>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-body">
+                            <p><strong>Objetivo:</strong> Transformar o diagnóstico em direção.</p>
+                            <div class="kickoff-structure">
+                                <div class="kickoff-item"><span class="kickoff-num">1</span><span>Acolhimento e contextualização</span></div>
+                                <div class="kickoff-item"><span class="kickoff-num">2</span><span>Validação do diagnóstico</span></div>
+                                <div class="kickoff-item"><span class="kickoff-num">3</span><span>Priorização de objetivos</span></div>
+                                <div class="kickoff-item"><span class="kickoff-num">4</span><span>Definição do foco central</span></div>
+                                <div class="kickoff-item"><span class="kickoff-num">5</span><span>Definição de entregas desejadas</span></div>
+                                <div class="kickoff-item"><span class="kickoff-num">6</span><span>Organização dos próximos passos</span></div>
+                                <div class="kickoff-item"><span class="kickoff-num">7</span><span>Orientação sobre ferramentas e rotina</span></div>
+                            </div>
+                            <div class="result-box">
+                                <h4>✅ Resultado Esperado</h4>
+                                <p>O mentorado sai com <strong>clareza sobre o foco</strong>, entendimento da metodologia, <strong>metas definidas</strong>, tarefas iniciais e visão das ferramentas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card" data-step="5">
+                    <div class="step-header">
+                        <span class="step-number">5</span>
+                        <div class="step-title-group">
+                            <h3>Entrega do Kit de Onboarding</h3>
+                            <span class="step-time">⏱️ Kit Completo</span>
+                        </div>
+                        <button class="step-toggle" aria-label="Expandir">▼</button>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-body">
+                            <p><strong>Objetivo:</strong> Fornecer o "manual de entrada" da jornada.</p>
+                            <div class="kit-grid">
+                                <div class="kit-item">
+                                    <span class="kit-icon">📄</span>
+                                    <h5>Documento de Boas-vindas</h5>
+                                    <p>Visão geral, propósito, estrutura dos 6 encontros e regras de comunicação.</p>
+                                </div>
+                                <div class="kit-item">
+                                    <span class="kit-icon">📐</span>
+                                    <h5>Guia IA Pro+</h5>
+                                    <p>Diagnóstico, personalização, aplicação prática e acompanhamento contínuo.</p>
+                                </div>
+                                <div class="kit-item">
+                                    <span class="kit-icon">🗺️</span>
+                                    <h5>Mapa da Jornada</h5>
+                                    <p>O que acontece em cada semana, objetivos por encontro e checkpoints.</p>
+                                </div>
+                                <div class="kit-item">
+                                    <span class="kit-icon">⚖️</span>
+                                    <h5>Documento de Expectativas</h5>
+                                    <p>O que a mentoria entrega, o que não entrega e papéis de cada um.</p>
+                                </div>
+                                <div class="kit-item">
+                                    <span class="kit-icon">🧰</span>
+                                    <h5>Guia de Ferramentas</h5>
+                                    <p>Plataformas, canais de suporte, documentos compartilhados e ferramentas de IA.</p>
+                                </div>
+                                <div class="kit-item">
+                                    <span class="kit-icon">✅</span>
+                                    <h5>Checklist Técnico</h5>
+                                    <p>Contas, acessos, pastas, agenda e canal de comunicação ativo.</p>
+                                </div>
+                                <div class="kit-item">
+                                    <span class="kit-icon">📊</span>
+                                    <h5>Formulário de Linha de Base</h5>
+                                    <p>Percepção inicial de produtividade, confiança e clareza estratégica.</p>
+                                </div>
+                            </div>
+                            <div class="step-actions">
+                                <a href="#kit" class="btn-primary nav-link-sec" data-section="kit">Ver Kit Completo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card" data-step="6">
+                    <div class="step-header">
+                        <span class="step-number">6</span>
+                        <div class="step-title-group">
+                            <h3>Ativação Operacional</h3>
+                            <span class="step-time">⏱️ 2-5 dias</span>
+                        </div>
+                        <button class="step-toggle" aria-label="Expandir">▼</button>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-body">
+                            <p><strong>Objetivo:</strong> Garantir que o mentorado esteja pronto para executar.</p>
+                            <div class="deliverables">
+                                <h4>Atividades:</h4>
+                                <ul class="checklist" data-checklist="step6">
+                                    <li><label class="check-item"><input type="checkbox"><span>Confirmar agenda dos encontros</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Testar acessos às plataformas</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Organizar documentos-base</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Criar pasta compartilhada do projeto</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Definir canal oficial de suporte</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Definir primeira tarefa prática</span></label></li>
+                                    <li><label class="check-item"><input type="checkbox"><span>Registrar indicadores iniciais</span></label></li>
+                                </ul>
+                            </div>
+                            <div class="first-tasks">
+                                <h4>Exemplos de Primeira Tarefa:</h4>
+                                <ul>
+                                    <li>Listar tarefas repetitivas da rotina</li>
+                                    <li>Trazer modelos de documentos</li>
+                                    <li>Mapear fluxo de atendimento</li>
+                                    <li>Reunir materiais de conteúdo</li>
+                                    <li>Testar prompts iniciais</li>
+                                    <li>Separar um processo real para otimização</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card" data-step="7">
+                    <div class="step-header">
+                        <span class="step-number">7</span>
+                        <div class="step-title-group">
+                            <h3>Checkpoint Inicial de Adaptação</h3>
+                            <span class="step-time">⏱️ 5-7 dias após kickoff</span>
+                        </div>
+                        <button class="step-toggle" aria-label="Expandir">▼</button>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-body">
+                            <p><strong>Objetivo:</strong> Verificar adesão, remover travas e ajustar rota cedo.</p>
+                            <div class="checkpoint-questions">
+                                <div class="cp-q">❓ O processo inicial ficou claro?</div>
+                                <div class="cp-q">❓ Você conseguiu acessar as ferramentas?</div>
+                                <div class="cp-q">❓ A primeira tarefa fez sentido?</div>
+                                <div class="cp-q">❓ Onde surgiram dúvidas?</div>
+                                <div class="cp-q">❓ Está confortável com o ritmo?</div>
+                                <div class="cp-q">❓ Precisamos ajustar o foco?</div>
+                            </div>
+                            <div class="step-meta">
+                                <span class="tag">Formato: WhatsApp, formulário curto ou microchamada</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Questionário Diagnóstico -->
+        <section id="questionario" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Questionário de Diagnóstico Inicial</h2>
+                <p class="section-desc">Espinha dorsal do onboarding. Respostas salvas automaticamente no navegador.</p>
+            </div>
+
+            <div class="wizard-progress">
+                <div class="wizard-bar" id="wizardBar"></div>
+                <span class="wizard-text" id="wizardText">Bloco A de 9</span>
+            </div>
+
+            <div class="wizard-nav">
+                <button class="wizard-btn" id="prevBlock" disabled>← Anterior</button>
+                <div class="wizard-dots" id="wizardDots"></div>
+                <button class="wizard-btn" id="nextBlock">Próximo →</button>
+            </div>
+
+            <form id="diagnosticoForm" class="diagnostico-form">
+                <!-- Bloco A: Identificação -->
+                <div class="form-block active" data-block="A">
+                    <div class="block-header">
+                        <span class="block-letter">A</span>
+                        <h3>Identificação e Contexto</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field-group">
+                            <label for="q1">1. Nome completo</label>
+                            <input type="text" id="q1" name="q1" placeholder="Digite seu nome completo">
+                        </div>
+                        <div class="field-group">
+                            <label for="q2">2. Profissão</label>
+                            <input type="text" id="q2" name="q2" placeholder="Ex: Farmacêutico, Médico, Professor...">
+                        </div>
+                        <div class="field-group">
+                            <label for="q3">3. Especialidade ou área principal</label>
+                            <input type="text" id="q3" name="q3" placeholder="Ex: Farmácia Clínica, Cardiologia...">
+                        </div>
+                        <div class="field-group">
+                            <label for="q4">4. Cidade/Estado/País</label>
+                            <input type="text" id="q4" name="q4" placeholder="Ex: São Paulo, SP - Brasil">
+                        </div>
+                        <div class="field-group">
+                            <label for="q5">5. Empresa, clínica ou instituição</label>
+                            <input type="text" id="q5" name="q5" placeholder="Onde você atua atualmente">
+                        </div>
+                        <div class="field-group">
+                            <label for="q6">6. Regime de trabalho</label>
+                            <select id="q6" name="q6">
+                                <option value="">Selecione...</option>
+                                <option value="autonomo">Autônomo</option>
+                                <option value="empregado">Empregado</option>
+                                <option value="gestor">Gestor</option>
+                                <option value="professor">Professor</option>
+                                <option value="empreendedor">Empreendedor</option>
+                            </select>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q7">7. Principal contexto hoje</label>
+                            <select id="q7" name="q7">
+                                <option value="">Selecione...</option>
+                                <option value="assistencial">Assistencial</option>
+                                <option value="educacional">Educacional</option>
+                                <option value="gestao">Gestão</option>
+                                <option value="comercial">Comercial</option>
+                                <option value="consultoria">Consultoria</option>
+                                <option value="conteudo">Conteúdo</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco B: Momento Profissional -->
+                <div class="form-block" data-block="B">
+                    <div class="block-header">
+                        <span class="block-letter">B</span>
+                        <h3>Momento Profissional</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field-group full">
+                            <label for="q8">8. Em que fase da carreira você se encontra?</label>
+                            <textarea id="q8" name="q8" rows="3" placeholder="Descreva sua fase atual..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q9">9. Principais desafios profissionais atualmente</label>
+                            <textarea id="q9" name="q9" rows="3" placeholder="Liste seus principais desafios..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q10">10. O que mais consome seu tempo e energia?</label>
+                            <textarea id="q10" name="q10" rows="3" placeholder="Descreva sua rotina..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q11">11. Onde sente que está perdendo produtividade?</label>
+                            <textarea id="q11" name="q11" rows="3" placeholder="Identifique os gargalos..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q12">12. Existe demanda repetitiva que poderia ser automatizada?</label>
+                            <textarea id="q12" name="q12" rows="3" placeholder="Descreva as tarefas repetitivas..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco C: Tecnologia e IA -->
+                <div class="form-block" data-block="C">
+                    <div class="block-header">
+                        <span class="block-letter">C</span>
+                        <h3>Relação com Tecnologia e IA</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field-group full">
+                            <label for="q13">13. Nível de familiaridade com IA</label>
+                            <div class="rating-scale" data-rating="q13">
+                                <button type="button" data-value="1">1<br><small>Iniciante</small></button>
+                                <button type="button" data-value="2">2</button>
+                                <button type="button" data-value="3">3</button>
+                                <button type="button" data-value="4">4</button>
+                                <button type="button" data-value="5">5<br><small>Avançado</small></button>
+                            </div>
+                            <input type="hidden" id="q13" name="q13">
+                        </div>
+                        <div class="field-group full">
+                            <label for="q14">14. Quais ferramentas já utilizou?</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="q14" value="chatgpt"> ChatGPT</label>
+                                <label><input type="checkbox" name="q14" value="claude"> Claude</label>
+                                <label><input type="checkbox" name="q14" value="gemini"> Gemini</label>
+                                <label><input type="checkbox" name="q14" value="automacoes"> Automações</label>
+                                <label><input type="checkbox" name="q14" value="assistentes"> Assistentes</label>
+                                <label><input type="checkbox" name="q14" value="formularios"> Formulários</label>
+                                <label><input type="checkbox" name="q14" value="agenda"> Agenda</label>
+                                <label><input type="checkbox" name="q14" value="crm"> CRM</label>
+                                <label><input type="checkbox" name="q14" value="outras"> Outras</label>
+                            </div>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q15">15. Como tem usado IA até agora?</label>
+                            <textarea id="q15" name="q15" rows="3" placeholder="Descreva seu uso atual..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q16">16. Quais dificuldades encontra ao usar IA?</label>
+                            <textarea id="q16" name="q16" rows="3" placeholder="Liste suas dificuldades..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q17">17. O que mais te trava?</label>
+                            <select id="q17" name="q17">
+                                <option value="">Selecione...</option>
+                                <option value="tecnica">Técnica</option>
+                                <option value="clareza">Clareza</option>
+                                <option value="inseguranca">Insegurança</option>
+                                <option value="tempo">Falta de tempo</option>
+                                <option value="direcao">Falta de direção</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco D: Objetivos -->
+                <div class="form-block" data-block="D">
+                    <div class="block-header">
+                        <span class="block-letter">D</span>
+                        <h3>Objetivos com a Mentoria</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field-group full">
+                            <label for="q18">18. Por que decidiu entrar na mentoria agora?</label>
+                            <textarea id="q18" name="q18" rows="3" placeholder="Motivação principal..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q19">19. O que espera conquistar ao final das 6 semanas?</label>
+                            <textarea id="q19" name="q19" rows="3" placeholder="Resultados esperados..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q20">20. Qual seria um resultado excelente para você?</label>
+                            <textarea id="q20" name="q20" rows="3" placeholder="Descreva o cenário ideal..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q21">21. Quais 3 metas são prioritárias?</label>
+                            <textarea id="q21" name="q21" rows="3" placeholder="1. ... 2. ... 3. ..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q22">22. Existe algum projeto específico para desenvolver?</label>
+                            <textarea id="q22" name="q22" rows="3" placeholder="Descreva o projeto..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco E: Aplicações Desejadas -->
+                <div class="form-block" data-block="E">
+                    <div class="block-header">
+                        <span class="block-letter">E</span>
+                        <h3>Aplicações Desejadas</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field-group full">
+                            <label>23. Você quer usar IA para quê, prioritariamente? (Selecione todos)</label>
+                            <div class="checkbox-grid">
+                                <label><input type="checkbox" name="q23" value="atendimento"> 🩺 Atendimento</label>
+                                <label><input type="checkbox" name="q23" value="documentacao"> 📝 Documentação</label>
+                                <label><input type="checkbox" name="q23" value="marketing"> 📢 Marketing</label>
+                                <label><input type="checkbox" name="q23" value="conteudo"> ✍️ Conteúdo</label>
+                                <label><input type="checkbox" name="q23" value="estudo"> 📚 Estudo</label>
+                                <label><input type="checkbox" name="q23" value="decisao"> 🧠 Tomada de Decisão</label>
+                                <label><input type="checkbox" name="q23" value="gestao"> 📊 Gestão</label>
+                                <label><input type="checkbox" name="q23" value="rotina"> 🗓️ Organização de Rotina</label>
+                                <label><input type="checkbox" name="q23" value="produtos"> 🎁 Criação de Produtos</label>
+                                <label><input type="checkbox" name="q23" value="assistentes"> 🤖 Assistentes Personalizados</label>
+                                <label><input type="checkbox" name="q23" value="automacao"> ⚙️ Automação de Processos</label>
+                            </div>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q24">24. Cite até 5 tarefas que gostaria de melhorar com IA</label>
+                            <textarea id="q24" name="q24" rows="4" placeholder="1. ... 2. ... 3. ... 4. ... 5. ..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q25">25. Algum material ou processo que gostaria de transformar em sistema?</label>
+                            <textarea id="q25" name="q25" rows="3" placeholder="Descreva o material ou processo..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco F: Posicionamento -->
+                <div class="form-block" data-block="F">
+                    <div class="block-header">
+                        <span class="block-letter">F</span>
+                        <h3>Posicionamento e Negócio</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field-group full">
+                            <label for="q26">26. Quer usar IA para rotina ou também criar novos serviços/produtos?</label>
+                            <select id="q26" name="q26">
+                                <option value="">Selecione...</option>
+                                <option value="rotina">Apenas melhorar a rotina</option>
+                                <option value="ambos">Rotina e novos serviços/produtos</option>
+                                <option value="negocio">Foco em novos serviços/produtos</option>
+                            </select>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q27">27. Você já vende algum serviço, curso, mentoria ou produto digital?</label>
+                            <textarea id="q27" name="q27" rows="3" placeholder="Descreva o que você já oferece..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q28">28. Deseja fortalecer seu posicionamento profissional com IA?</label>
+                            <div class="toggle-group">
+                                <label><input type="radio" name="q28" value="sim"> Sim</label>
+                                <label><input type="radio" name="q28" value="nao"> Não</label>
+                                <label><input type="radio" name="q28" value="talvez"> Talvez</label>
+                            </div>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q29">29. Interesse em construir autoridade digital, assistente próprio ou solução escalável?</label>
+                            <div class="toggle-group">
+                                <label><input type="radio" name="q29" value="sim"> Sim, muito interesse</label>
+                                <label><input type="radio" name="q29" value="medio"> Interesse moderado</label>
+                                <label><input type="radio" name="q29" value="nao"> Não no momento</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco G: Estrutura Atual -->
+                <div class="form-block" data-block="G">
+                    <div class="block-header">
+                        <span class="block-letter">G</span>
+                        <h3>Estrutura Atual</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field-group full">
+                            <label for="q30">30. Quais ferramentas usa no dia a dia?</label>
+                            <textarea id="q30" name="q30" rows="3" placeholder="Liste suas ferramentas..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label>31. Utiliza alguma das ferramentas abaixo?</label>
+                            <div class="checkbox-group">
+                                <label><input type="checkbox" name="q31" value="whatsapp"> WhatsApp Business</label>
+                                <label><input type="checkbox" name="q31" value="agenda"> Agenda online</label>
+                                <label><input type="checkbox" name="q31" value="email"> E-mail marketing</label>
+                                <label><input type="checkbox" name="q31" value="crm"> CRM</label>
+                                <label><input type="checkbox" name="q31" value="formularios"> Formulários</label>
+                                <label><input type="checkbox" name="q31" value="automacoes"> Automações</label>
+                                <label><input type="checkbox" name="q31" value="prontuario"> Prontuário</label>
+                                <label><input type="checkbox" name="q31" value="nenhuma"> Nenhuma ainda</label>
+                            </div>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q32">32. Tem equipe ou trabalha sozinho?</label>
+                            <select id="q32" name="q32">
+                                <option value="">Selecione...</option>
+                                <option value="sozinho">Trabalho sozinho</option>
+                                <option value="equipe_pequena">Equipe pequena (1-3 pessoas)</option>
+                                <option value="equipe_media">Equipe média (4-10)</option>
+                                <option value="equipe_grande">Equipe grande (10+)</option>
+                            </select>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q33">33. Disponibilidade semanal real para a mentoria</label>
+                            <select id="q33" name="q33">
+                                <option value="">Selecione...</option>
+                                <option value="ate2h">Até 2 horas</option>
+                                <option value="2a5h">2 a 5 horas</option>
+                                <option value="5a10h">5 a 10 horas</option>
+                                <option value="mais10h">Mais de 10 horas</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco H: Expectativas -->
+                <div class="form-block" data-block="H">
+                    <div class="block-header">
+                        <span class="block-letter">H</span>
+                        <h3>Expectativas e Compromisso</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field-group full">
+                            <label for="q34">34. O que depende de você para ter bons resultados?</label>
+                            <textarea id="q34" name="q34" rows="3" placeholder="Sua responsabilidade no processo..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q35">35. O que espera do mentor?</label>
+                            <textarea id="q35" name="q35" rows="3" placeholder="Expectativas sobre o papel do mentor..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q36">36. Qual formato de aprendizagem funciona melhor?</label>
+                            <select id="q36" name="q36">
+                                <option value="">Selecione...</option>
+                                <option value="visual">Visual (vídeos, diagramas)</option>
+                                <option value="auditivo">Auditivo (áudios, chamadas)</option>
+                                <option value="leitura">Leitura/escrita (textos, notas)</option>
+                                <option value="pratica">Prática (fazendo, testando)</option>
+                                <option value="misto">Misto</option>
+                            </select>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q37">37. Comprometimento com aplicação prática (0 a 10)</label>
+                            <div class="rating-scale" data-rating="q37">
+                                <button type="button" data-value="1">1</button>
+                                <button type="button" data-value="2">2</button>
+                                <button type="button" data-value="3">3</button>
+                                <button type="button" data-value="4">4</button>
+                                <button type="button" data-value="5">5</button>
+                                <button type="button" data-value="6">6</button>
+                                <button type="button" data-value="7">7</button>
+                                <button type="button" data-value="8">8</button>
+                                <button type="button" data-value="9">9</button>
+                                <button type="button" data-value="10">10</button>
+                            </div>
+                            <input type="hidden" id="q37" name="q37">
+                        </div>
+                        <div class="field-group full">
+                            <label for="q38">38. Alguma limitação importante?</label>
+                            <textarea id="q38" name="q38" rows="3" placeholder="Horário, saúde, tecnologia, etc..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco I: Materiais -->
+                <div class="form-block" data-block="I">
+                    <div class="block-header">
+                        <span class="block-letter">I</span>
+                        <h3>Materiais para Personalização</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="field-group full">
+                            <label for="q39">39. Envie links, documentos, perfis, fluxos ou materiais que representem sua rotina</label>
+                            <textarea id="q39" name="q39" rows="4" placeholder="Cole links ou descreva os materiais..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <label for="q40">40. Algo que você quer evitar ou não deseja como foco?</label>
+                            <textarea id="q40" name="q40" rows="3" placeholder="Restrições ou exclusões..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <div class="form-actions-bar">
+                <button class="btn-secondary" id="btnSalvarRascunho">💾 Salvar Rascunho</button>
+                <button class="btn-primary" id="btnFinalizarDiagnostico">✅ Finalizar Diagnóstico</button>
+            </div>
+
+            <div class="form-summary" id="formSummary" style="display:none;">
+                <h3>📋 Resumo do Diagnóstico</h3>
+                <div class="summary-grid" id="summaryContent"></div>
+            </div>
+        </section>
+
+        <!-- Seção: Ficha Estratégica -->
+        <section id="ficha" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Ficha Estratégica do Mentorado</h2>
+                <p class="section-desc">Ficha-resumo de onboarding para análise estratégica do mentor.</p>
+            </div>
+
+            <form id="fichaForm" class="ficha-form">
+                <div class="ficha-grid">
+                    <div class="ficha-section">
+                        <h3>👤 Perfil do Mentorado</h3>
+                        <div class="field-group">
+                            <label>Nome</label>
+                            <input type="text" id="f_nome" placeholder="Nome do mentorado">
+                        </div>
+                        <div class="field-group">
+                            <label>Profissão/Nicho</label>
+                            <input type="text" id="f_nicho" placeholder="Ex: Farmácia Clínica">
+                        </div>
+                        <div class="field-group">
+                            <label>Maturidade em IA</label>
+                            <select id="f_maturidade">
+                                <option value="">Selecione...</option>
+                                <option value="iniciante">Iniciante</option>
+                                <option value="basico">Básico</option>
+                                <option value="intermediario">Intermediário</option>
+                                <option value="avancado">Avançado</option>
+                            </select>
+                        </div>
+                        <div class="field-group">
+                            <label>Clareza do Objetivo</label>
+                            <select id="f_clareza">
+                                <option value="">Selecione...</option>
+                                <option value="baixa">Baixa</option>
+                                <option value="media">Média</option>
+                                <option value="alta">Alta</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="ficha-section">
+                        <h3>🎯 Objetivo Macro</h3>
+                        <div class="field-group">
+                            <label>Objetivo principal</label>
+                            <textarea id="f_objetivo" rows="3" placeholder="Descreva o objetivo macro..."></textarea>
+                        </div>
+                        <div class="field-group">
+                            <label>Dores operacionais principais</label>
+                            <textarea id="f_dores" rows="3" placeholder="Liste as principais dores..."></textarea>
+                        </div>
+                        <div class="field-group">
+                            <label>Oportunidades de ganho rápido</label>
+                            <textarea id="f_oportunidades" rows="3" placeholder="Identifique quick wins..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="ficha-section">
+                        <h3>📅 Metas</h3>
+                        <div class="field-group">
+                            <label>Meta rápida de 7 dias</label>
+                            <input type="text" id="f_meta7" placeholder="Primeira entrega rápida">
+                        </div>
+                        <div class="field-group">
+                            <label>Meta de 30 dias</label>
+                            <input type="text" id="f_meta30" placeholder="Meta do primeiro mês">
+                        </div>
+                        <div class="field-group">
+                            <label>Meta de 6 semanas</label>
+                            <input type="text" id="f_meta6" placeholder="Meta final da mentoria">
+                        </div>
+                    </div>
+
+                    <div class="ficha-section">
+                        <h3>🛠️ Aplicações e Recursos</h3>
+                        <div class="field-group">
+                            <label>Aplicações prioritárias de IA</label>
+                            <textarea id="f_aplicacoes" rows="3" placeholder="Ex: atendimento, documentação, marketing..."></textarea>
+                        </div>
+                        <div class="field-group">
+                            <label>Ferramentas prioritárias</label>
+                            <textarea id="f_ferramentas" rows="3" placeholder="Ex: ChatGPT, Notion, Zapier..."></textarea>
+                        </div>
+                        <div class="field-group">
+                            <label>Recursos necessários</label>
+                            <textarea id="f_recursos" rows="3" placeholder="O que será necessário fornecer..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="ficha-section full">
+                        <h3>📋 Plano Preliminar dos Encontros</h3>
+                        <div class="encontros-grid">
+                            <div class="encontro-card">
+                                <span class="enc-num">1º</span>
+                                <input type="text" id="f_e1" placeholder="Foco do 1º encontro">
+                            </div>
+                            <div class="encontro-card">
+                                <span class="enc-num">2º</span>
+                                <input type="text" id="f_e2" placeholder="Foco do 2º encontro">
+                            </div>
+                            <div class="encontro-card">
+                                <span class="enc-num">3º</span>
+                                <input type="text" id="f_e3" placeholder="Foco do 3º encontro">
+                            </div>
+                            <div class="encontro-card">
+                                <span class="enc-num">4º</span>
+                                <input type="text" id="f_e4" placeholder="Foco do 4º encontro">
+                            </div>
+                            <div class="encontro-card">
+                                <span class="enc-num">5º</span>
+                                <input type="text" id="f_e5" placeholder="Foco do 5º encontro">
+                            </div>
+                            <div class="encontro-card">
+                                <span class="enc-num">6º</span>
+                                <input type="text" id="f_e6" placeholder="Foco do 6º encontro">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ficha-section full">
+                        <h3>⚠️ Riscos e Observações</h3>
+                        <div class="field-group">
+                            <label>Riscos de desalinhamento</label>
+                            <textarea id="f_riscos" rows="3" placeholder="Identifique possíveis riscos..."></textarea>
+                        </div>
+                        <div class="field-group">
+                            <label>Observações do mentor</label>
+                            <textarea id="f_obs" rows="3" placeholder="Notas adicionais..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions-bar">
+                    <button type="button" class="btn-secondary" id="btnExportarFicha">📥 Exportar PDF</button>
+                    <button type="button" class="btn-primary" id="btnSalvarFicha">💾 Salvar Ficha</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Seção: Kit Onboarding -->
+        <section id="kit" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Kit de Onboarding</h2>
+                <p class="section-desc">"Manual de entrada" da jornada — materiais e checklists para garantir uma entrada estruturada.</p>
+            </div>
+
+            <div class="kit-tabs">
+                <button class="kit-tab active" data-tab="boasvindas">Boas-vindas</button>
+                <button class="kit-tab" data-tab="metodologia">Metodologia</button>
+                <button class="kit-tab" data-tab="mapa">Mapa da Jornada</button>
+                <button class="kit-tab" data-tab="expectativas">Expectativas</button>
+                <button class="kit-tab" data-tab="ferramentas">Ferramentas</button>
+                <button class="kit-tab" data-tab="checklist">Checklist</button>
+                <button class="kit-tab" data-tab="baseline">Linha de Base</button>
+            </div>
+
+            <div class="kit-content">
+                <div class="kit-panel active" id="panel-boasvindas">
+                    <div class="kit-document">
+                        <h3>📄 Documento de Boas-vindas</h3>
+                        <div class="doc-content">
+                            <h4>Bem-vindo à Mentoria Clínica com IA 1:1</h4>
+                            <p>Parabéns pela decisão de investir na transformação da sua prática profissional com inteligência artificial. Você está prestes a iniciar uma jornada estruturada de 6 semanas que vai reorganizar sua relação com a tecnologia e potencializar seus resultados.</p>
+                            <h5>Propósito do Programa</h5>
+                            <p>A mentoria foi desenhada para profissionais que desejam ir além do uso básico de IA. Nosso objetivo é transformar a inteligência artificial em uma extensão natural da sua prática profissional, com ética, produtividade e resultados mensuráveis.</p>
+                            <h5>Estrutura dos 6 Encontros</h5>
+                            <ul>
+                                <li>Encontros online de até 90 minutos</li>
+                                <li>Suporte contínuo via WhatsApp</li>
+                                <li>Materiais complementares personalizados</li>
+                                <li>Entregáveis práticos a cada sessão</li>
+                            </ul>
+                            <h5>Regras de Comunicação</h5>
+                            <ul>
+                                <li>Canal principal: WhatsApp para dúvidas rápidas</li>
+                                <li>Prazo de resposta: até 24h úteis</li>
+                                <li>Agendamento: com antecedência mínima de 48h</li>
+                                <li>Material para análise: enviar com 24h de antecedência</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kit-panel" id="panel-metodologia">
+                    <div class="kit-document">
+                        <h3>📐 Guia da Metodologia IA Pro+</h3>
+                        <div class="doc-content">
+                            <p>A metodologia <strong>IA Pro+</strong> é composta por quatro pilares interdependentes:</p>
+                            <div class="pilares-grid">
+                                <div class="pilar-card">
+                                    <span class="pilar-num">1</span>
+                                    <h5>Diagnóstico Inicial</h5>
+                                    <p>Mapeamento profundo do perfil, dores, objetivos e maturidade digital do mentorado.</p>
+                                </div>
+                                <div class="pilar-card">
+                                    <span class="pilar-num">2</span>
+                                    <h5>Personalização Estratégica</h5>
+                                    <p>Construção de uma trilha única com base no diagnóstico, definindo prioridades e ferramentas.</p>
+                                </div>
+                                <div class="pilar-card">
+                                    <span class="pilar-num">3</span>
+                                    <h5>Aplicação Prática com IA</h5>
+                                    <p>Execução de tarefas reais, criação de prompts, assistentes, fluxos e automações.</p>
+                                </div>
+                                <div class="pilar-card">
+                                    <span class="pilar-num">4</span>
+                                    <h5>Acompanhamento Contínuo</h5>
+                                    <p>Feedbacks entre encontros, ajustes de rota e refinamento das soluções implementadas.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kit-panel" id="panel-mapa">
+                    <div class="kit-document">
+                        <h3>🗺️ Mapa da Jornada — 6 Semanas</h3>
+                        <div class="doc-content">
+                            <div class="jornada-timeline">
+                                <div class="jornada-item">
+                                    <span class="jornada-semana">Semana 1</span>
+                                    <div class="jornada-box">
+                                        <h5>Diagnóstico e Alinhamento</h5>
+                                        <p>Kickoff, validação do diagnóstico, definição do foco central e primeiras ferramentas.</p>
+                                    </div>
+                                </div>
+                                <div class="jornada-item">
+                                    <span class="jornada-semana">Semana 2</span>
+                                    <div class="jornada-box">
+                                        <h5>Fundamentos e Primeiros Fluxos</h5>
+                                        <p>Estruturação de prompts, organização de rotina e primeiros testes de aplicação.</p>
+                                    </div>
+                                </div>
+                                <div class="jornada-item">
+                                    <span class="jornada-semana">Semana 3</span>
+                                    <div class="jornada-box">
+                                        <h5>Automação e Assistentes</h5>
+                                        <p>Criação de assistentes personalizados, automações de tarefas repetitivas.</p>
+                                    </div>
+                                </div>
+                                <div class="jornada-item">
+                                    <span class="jornada-semana">Semana 4</span>
+                                    <div class="jornada-box">
+                                        <h5>Aplicação no Nicho</h5>
+                                        <p>Adaptação das soluções para o contexto profissional específico do mentorado.</p>
+                                    </div>
+                                </div>
+                                <div class="jornada-item">
+                                    <span class="jornada-semana">Semana 5</span>
+                                    <div class="jornada-box">
+                                        <h5>Produtos e Posicionamento</h5>
+                                        <p>Estruturação de materiais, conteúdos ou serviços apoiados por IA.</p>
+                                    </div>
+                                </div>
+                                <div class="jornada-item">
+                                    <span class="jornada-semana">Semana 6</span>
+                                    <div class="jornada-box">
+                                        <h5>Consolidação e Próximos Passos</h5>
+                                        <p>Revisão de entregáveis, mensuração de resultados e planejamento de continuidade.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kit-panel" id="panel-expectativas">
+                    <div class="kit-document">
+                        <h3>⚖️ Documento de Expectativas</h3>
+                        <div class="doc-content">
+                            <div class="expectations-grid">
+                                <div class="expect-card entrega">
+                                    <h5>✅ O que a mentoria entrega</h5>
+                                    <ul>
+                                        <li>6 encontros individuais de até 90 minutos</li>
+                                        <li>Suporte via WhatsApp entre sessões</li>
+                                        <li>Materiais personalizados por nicho</li>
+                                        <li>Orientação prática e aplicada</li>
+                                        <li>Feedback contínuo sobre entregáveis</li>
+                                        <li>Estruturação de fluxos e prompts</li>
+                                    </ul>
+                                </div>
+                                <div class="expect-card nao-entrega">
+                                    <h5>❌ O que a mentoria não entrega</h5>
+                                    <ul>
+                                        <li>Desenvolvimento técnico de software</li>
+                                        <li>Resultados sem execução prática</li>
+                                        <li>Substituição de consultoria jurídica ou contábil</li>
+                                        <li>Garantia de retorno financeiro imediato</li>
+                                        <li>Acesso pago a ferramentas de terceiros</li>
+                                    </ul>
+                                </div>
+                                <div class="expect-card papel-mentor">
+                                    <h5>👨‍🏫 Papel do Mentor</h5>
+                                    <ul>
+                                        <li>Conduzir a transformação com foco prático</li>
+                                        <li>Adaptar tecnologia ao nicho do mentorado</li>
+                                        <li>Fornecer direcionamento estratégico</li>
+                                        <li>Revisar e refinar entregáveis</li>
+                                        <li>Manter o ritmo e a adesão</li>
+                                    </ul>
+                                </div>
+                                <div class="expect-card papel-mentorado">
+                                    <h5>🙋 Papel do Mentorado</h5>
+                                    <ul>
+                                        <li>Comparecer aos encontros preparado</li>
+                                        <li>Executar as tarefas práticas propostas</li>
+                                        <li>Trazer dúvidas e bloqueios reais</li>
+                                        <li>Manter comunicação ativa</li>
+                                        <li>Aplicar o aprendizado entre sessões</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kit-panel" id="panel-ferramentas">
+                    <div class="kit-document">
+                        <h3>🧰 Guia de Ferramentas</h3>
+                        <div class="doc-content">
+                            <div class="tools-grid">
+                                <div class="tool-card">
+                                    <span class="tool-icon">📹</span>
+                                    <h5>Reuniões</h5>
+                                    <p>Google Meet ou Zoom</p>
+                                    <span class="tool-tag">Obrigatório</span>
+                                </div>
+                                <div class="tool-card">
+                                    <span class="tool-icon">💬</span>
+                                    <h5>Suporte</h5>
+                                    <p>WhatsApp</p>
+                                    <span class="tool-tag">Obrigatório</span>
+                                </div>
+                                <div class="tool-card">
+                                    <span class="tool-icon">📁</span>
+                                    <h5>Documentos</h5>
+                                    <p>Google Drive ou Notion</p>
+                                    <span class="tool-tag">Obrigatório</span>
+                                </div>
+                                <div class="tool-card">
+                                    <span class="tool-icon">🤖</span>
+                                    <h5>IA Principal</h5>
+                                    <p>ChatGPT (Plus recomendado)</p>
+                                    <span class="tool-tag">Obrigatório</span>
+                                </div>
+                                <div class="tool-card">
+                                    <span class="tool-icon">📅</span>
+                                    <h5>Agenda</h5>
+                                    <p>Google Calendar</p>
+                                    <span class="tool-tag">Obrigatório</span>
+                                </div>
+                                <div class="tool-card">
+                                    <span class="tool-icon">📋</span>
+                                    <h5>Diagnóstico</h5>
+                                    <p>Google Forms, Tally ou Typeform</p>
+                                    <span class="tool-tag">Recomendado</span>
+                                </div>
+                                <div class="tool-card">
+                                    <span class="tool-icon">📊</span>
+                                    <h5>Acompanhamento</h5>
+                                    <p>Planilha, Notion ou CRM simples</p>
+                                    <span class="tool-tag">Recomendado</span>
+                                </div>
+                                <div class="tool-card">
+                                    <span class="tool-icon">⚡</span>
+                                    <h5>Automações</h5>
+                                    <p>Zapier, Make ou n8n</p>
+                                    <span class="tool-tag">Recomendado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kit-panel" id="panel-checklist">
+                    <div class="kit-document">
+                        <h3>✅ Checklist Técnico</h3>
+                        <div class="doc-content">
+                            <div class="checklist-big" data-checklist="tecnico">
+                                <label class="check-item-big"><input type="checkbox"><span>Conta ativa no ChatGPT (preferencialmente Plus)</span></label>
+                                <label class="check-item-big"><input type="checkbox"><span>Conta Google ativa (Gmail, Drive, Calendar)</span></label>
+                                <label class="check-item-big"><input type="checkbox"><span>WhatsApp disponível para suporte</span></label>
+                                <label class="check-item-big"><input type="checkbox"><span>Pasta criada para organizar materiais da mentoria</span></label>
+                                <label class="check-item-big"><input type="checkbox"><span>Agenda dos 6 encontros confirmada</span></label>
+                                <label class="check-item-big"><input type="checkbox"><span>Teste de áudio e vídeo realizado</span></label>
+                                <label class="check-item-big"><input type="checkbox"><span>Diagnóstico preenchido e enviado</span></label>
+                                <label class="check-item-big"><input type="checkbox"><span>Materiais de base organizados e disponíveis</span></label>
+                                <label class="check-item-big"><input type="checkbox"><span>Primeira tarefa prática definida</span></label>
+                                <label class="check-item-big"><input type="checkbox"><span>Canal de comunicação oficial confirmado</span></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kit-panel" id="panel-baseline">
+                    <div class="kit-document">
+                        <h3>📊 Formulário de Linha de Base</h3>
+                        <div class="doc-content">
+                            <p class="baseline-intro">Registre o marco zero do mentorado para mensurar evolução ao final da mentoria.</p>
+                            <div class="baseline-form">
+                                <div class="baseline-item">
+                                    <label>Produtividade atual (0-10)</label>
+                                    <div class="rating-scale" data-rating="b1">
+                                        <button type="button" data-value="1">1</button>
+                                        <button type="button" data-value="2">2</button>
+                                        <button type="button" data-value="3">3</button>
+                                        <button type="button" data-value="4">4</button>
+                                        <button type="button" data-value="5">5</button>
+                                        <button type="button" data-value="6">6</button>
+                                        <button type="button" data-value="7">7</button>
+                                        <button type="button" data-value="8">8</button>
+                                        <button type="button" data-value="9">9</button>
+                                        <button type="button" data-value="10">10</button>
+                                    </div>
+                                    <input type="hidden" id="b1">
+                                </div>
+                                <div class="baseline-item">
+                                    <label>Confiança no uso de IA (0-10)</label>
+                                    <div class="rating-scale" data-rating="b2">
+                                        <button type="button" data-value="1">1</button>
+                                        <button type="button" data-value="2">2</button>
+                                        <button type="button" data-value="3">3</button>
+                                        <button type="button" data-value="4">4</button>
+                                        <button type="button" data-value="5">5</button>
+                                        <button type="button" data-value="6">6</button>
+                                        <button type="button" data-value="7">7</button>
+                                        <button type="button" data-value="8">8</button>
+                                        <button type="button" data-value="9">9</button>
+                                        <button type="button" data-value="10">10</button>
+                                    </div>
+                                    <input type="hidden" id="b2">
+                                </div>
+                                <div class="baseline-item">
+                                    <label>Clareza estratégica (0-10)</label>
+                                    <div class="rating-scale" data-rating="b3">
+                                        <button type="button" data-value="1">1</button>
+                                        <button type="button" data-value="2">2</button>
+                                        <button type="button" data-value="3">3</button>
+                                        <button type="button" data-value="4">4</button>
+                                        <button type="button" data-value="5">5</button>
+                                        <button type="button" data-value="6">6</button>
+                                        <button type="button" data-value="7">7</button>
+                                        <button type="button" data-value="8">8</button>
+                                        <button type="button" data-value="9">9</button>
+                                        <button type="button" data-value="10">10</button>
+                                    </div>
+                                    <input type="hidden" id="b3">
+                                </div>
+                                <div class="baseline-item">
+                                    <label>Processos existentes documentados (0-10)</label>
+                                    <div class="rating-scale" data-rating="b4">
+                                        <button type="button" data-value="1">1</button>
+                                        <button type="button" data-value="2">2</button>
+                                        <button type="button" data-value="3">3</button>
+                                        <button type="button" data-value="4">4</button>
+                                        <button type="button" data-value="5">5</button>
+                                        <button type="button" data-value="6">6</button>
+                                        <button type="button" data-value="7">7</button>
+                                        <button type="button" data-value="8">8</button>
+                                        <button type="button" data-value="9">9</button>
+                                        <button type="button" data-value="10">10</button>
+                                    </div>
+                                    <input type="hidden" id="b4">
+                                </div>
+                                <div class="baseline-item">
+                                    <label>Tempo gasto em tarefas-chave (horas/semana)</label>
+                                    <input type="number" id="b5" placeholder="Ex: 15" min="0" max="168">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Trilha 5 Dias -->
+        <section id="trilha" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Trilha de Onboarding em 5 Dias</h2>
+                <p class="section-desc">Modelo compacto e eficiente para acelerar a entrada do mentorado.</p>
+            </div>
+
+            <div class="trilha-timeline">
+                <div class="trilha-day" data-day="1">
+                    <div class="day-marker">
+                        <span class="day-num">Dia 1</span>
+                        <span class="day-badge">Início</span>
+                    </div>
+                    <div class="day-content">
+                        <h4>Boas-vindas + Envio do Formulário</h4>
+                        <div class="day-checklist" data-checklist="dia1">
+                            <label class="check-item"><input type="checkbox"><span>Enviar mensagem oficial de boas-vindas</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Apresentar brevemente a estrutura da mentoria</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Enviar link do questionário diagnóstico</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Informar prazo de resposta (24-48h)</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Confirmar canal de comunicação principal</span></label>
+                        </div>
+                        <div class="day-meta">⏱️ Tempo estimado: 10 min | Canal: WhatsApp + E-mail</div>
+                    </div>
+                </div>
+
+                <div class="trilha-day" data-day="2">
+                    <div class="day-marker">
+                        <span class="day-num">Dia 2</span>
+                        <span class="day-badge">Diagnóstico</span>
+                    </div>
+                    <div class="day-content">
+                        <h4>Mentorado Preenche Diagnóstico</h4>
+                        <div class="day-checklist" data-checklist="dia2">
+                            <label class="check-item"><input type="checkbox"><span>Preencher todos os blocos do questionário (A-I)</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Anexar materiais, links e documentos relevantes</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Revisar respostas antes de enviar</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Enviar confirmação de envio ao mentor</span></label>
+                        </div>
+                        <div class="day-meta">⏱️ Tempo estimado: 20-40 min | Ação: Mentorado</div>
+                    </div>
+                </div>
+
+                <div class="trilha-day" data-day="3">
+                    <div class="day-marker">
+                        <span class="day-num">Dia 3</span>
+                        <span class="day-badge">Análise</span>
+                    </div>
+                    <div class="day-content">
+                        <h4>Análise do Material + Plano Preliminar</h4>
+                        <div class="day-checklist" data-checklist="dia3">
+                            <label class="check-item"><input type="checkbox"><span>Ler e analisar todas as respostas do diagnóstico</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Montar ficha estratégica do mentorado</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Identificar oportunidades de quick win</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Definir linha mestra da mentoria</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Preparar proposta de trilha personalizada</span></label>
+                        </div>
+                        <div class="day-meta">⏱️ Tempo estimado: 30-60 min | Ação: Mentor</div>
+                    </div>
+                </div>
+
+                <div class="trilha-day" data-day="4">
+                    <div class="day-marker">
+                        <span class="day-num">Dia 4</span>
+                        <span class="day-badge">Kickoff</span>
+                    </div>
+                    <div class="day-content">
+                        <h4>Reunião de Kickoff Estratégico</h4>
+                        <div class="day-checklist" data-checklist="dia4">
+                            <label class="check-item"><input type="checkbox"><span>Acolhimento e contextualização (10 min)</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Validação do diagnóstico (15 min)</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Priorização de objetivos (15 min)</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Definição do foco central (20 min)</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Definição de entregas desejadas (15 min)</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Organização dos próximos passos (10 min)</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Orientação sobre ferramentas e rotina (5 min)</span></label>
+                        </div>
+                        <div class="day-meta">⏱️ Tempo estimado: 60-90 min | Formato: Videoconferência</div>
+                    </div>
+                </div>
+
+                <div class="trilha-day" data-day="5">
+                    <div class="day-marker">
+                        <span class="day-num">Dia 5</span>
+                        <span class="day-badge">Ativação</span>
+                    </div>
+                    <div class="day-content">
+                        <h4>Envio do Resumo, Checklist e Primeira Tarefa</h4>
+                        <div class="day-checklist" data-checklist="dia5">
+                            <label class="check-item"><input type="checkbox"><span>Enviar resumo do kickoff por escrito</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Disponibilizar checklist técnico</span></label>
+                            <label class="check-item"><span class="check-item"><input type="checkbox"><span>Definir primeira tarefa prática</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Compartilhar links e acessos necessários</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Agendar checkpoint para 5-7 dias</span></label>
+                        </div>
+                        <div class="day-meta">⏱️ Tempo estimado: 15 min | Canal: WhatsApp + E-mail</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Indicadores -->
+        <section id="indicadores" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Indicadores e Avaliação</h2>
+                <p class="section-desc">Monitoramento do onboarding como processo de experiência e performance.</p>
+            </div>
+
+            <div class="indicadores-tabs">
+                <button class="ind-tab active" data-ind="experiencia">Experiência</button>
+                <button class="ind-tab" data-ind="eficacia">Eficácia</button>
+                <button class="ind-tab" data-ind="qualitativos">Qualitativos</button>
+            </div>
+
+            <div class="ind-panels">
+                <div class="ind-panel active" id="ind-experiencia">
+                    <h3>Feedback de Experiência</h3>
+                    <p class="ind-subtitle">Coletar em 3 momentos: após onboarding, após kickoff e após primeira semana.</p>
+                    <div class="feedback-form">
+                        <div class="field-group">
+                            <label>O processo inicial foi claro?</label>
+                            <div class="rating-scale" data-rating="fe1">
+                                <button type="button" data-value="1">1</button>
+                                <button type="button" data-value="2">2</button>
+                                <button type="button" data-value="3">3</button>
+                                <button type="button" data-value="4">4</button>
+                                <button type="button" data-value="5">5</button>
+                            </div>
+                            <input type="hidden" id="fe1">
+                        </div>
+                        <div class="field-group">
+                            <label>Você se sentiu compreendido em suas necessidades?</label>
+                            <div class="rating-scale" data-rating="fe2">
+                                <button type="button" data-value="1">1</button>
+                                <button type="button" data-value="2">2</button>
+                                <button type="button" data-value="3">3</button>
+                                <button type="button" data-value="4">4</button>
+                                <button type="button" data-value="5">5</button>
+                            </div>
+                            <input type="hidden" id="fe2">
+                        </div>
+                        <div class="field-group">
+                            <label>O diagnóstico ajudou a organizar suas ideias?</label>
+                            <div class="rating-scale" data-rating="fe3">
+                                <button type="button" data-value="1">1</button>
+                                <button type="button" data-value="2">2</button>
+                                <button type="button" data-value="3">3</button>
+                                <button type="button" data-value="4">4</button>
+                                <button type="button" data-value="5">5</button>
+                            </div>
+                            <input type="hidden" id="fe3">
+                        </div>
+                        <div class="field-group">
+                            <label>O kickoff trouxe clareza sobre a direção?</label>
+                            <div class="rating-scale" data-rating="fe4">
+                                <button type="button" data-value="1">1</button>
+                                <button type="button" data-value="2">2</button>
+                                <button type="button" data-value="3">3</button>
+                                <button type="button" data-value="4">4</button>
+                                <button type="button" data-value="5">5</button>
+                            </div>
+                            <input type="hidden" id="fe4">
+                        </div>
+                        <div class="field-group full">
+                            <label>O que poderia ser melhorado?</label>
+                            <textarea id="fe5" rows="3" placeholder="Sugestões de melhoria..."></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ind-panel" id="ind-eficacia">
+                    <h3>Indicadores de Eficácia</h3>
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-icon">📝</div>
+                            <div class="kpi-info">
+                                <h5>Taxa de Preenchimento</h5>
+                                <p>% de mentorados que completam o questionário</p>
+                                <div class="kpi-target">Meta: ≥ 95%</div>
+                            </div>
+                            <div class="kpi-input">
+                                <input type="number" id="kpi1" placeholder="0" min="0" max="100">
+                                <span>%</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon">⏱️</div>
+                            <div class="kpi-info">
+                                <h5>Tempo Médio</h5>
+                                <p>Tempo médio para conclusão do onboarding</p>
+                                <div class="kpi-target">Meta: ≤ 5 dias</div>
+                            </div>
+                            <div class="kpi-input">
+                                <input type="number" id="kpi2" placeholder="0" min="0" max="30">
+                                <span>dias</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon">🎥</div>
+                            <div class="kpi-info">
+                                <h5>Presença no Kickoff</h5>
+                                <p>% de presença na reunião de kickoff</p>
+                                <div class="kpi-target">Meta: ≥ 95%</div>
+                            </div>
+                            <div class="kpi-input">
+                                <input type="number" id="kpi3" placeholder="0" min="0" max="100">
+                                <span>%</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon">✅</div>
+                            <div class="kpi-info">
+                                <h5>Início com Tarefa</h5>
+                                <p>% que iniciam com tarefa prática definida</p>
+                                <div class="kpi-target">Meta: 100%</div>
+                            </div>
+                            <div class="kpi-input">
+                                <input type="number" id="kpi4" placeholder="0" min="0" max="100">
+                                <span>%</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon">💡</div>
+                            <div class="kpi-info">
+                                <h5>Clareza Autorreferida</h5>
+                                <p>Média de clareza reportada após kickoff</p>
+                                <div class="kpi-target">Meta: ≥ 8/10</div>
+                            </div>
+                            <div class="kpi-input">
+                                <input type="number" id="kpi5" placeholder="0" min="0" max="10">
+                                <span>/10</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-icon">🤖</div>
+                            <div class="kpi-info">
+                                <h5>Confiança Inicial</h5>
+                                <p>Nível de confiança no uso de IA</p>
+                                <div class="kpi-target">Meta: comparar evolução</div>
+                            </div>
+                            <div class="kpi-input">
+                                <input type="number" id="kpi6" placeholder="0" min="0" max="10">
+                                <span>/10</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ind-panel" id="ind-qualitativos">
+                    <h3>Indicadores Qualitativos</h3>
+                    <div class="qualitative-list">
+                        <div class="qual-item">
+                            <span class="qual-icon">📝</span>
+                            <div>
+                                <h5>Qualidade das Respostas do Diagnóstico</h5>
+                                <p>O mentorado fornece respostas detalhadas, contextualizadas e com exemplos concretos?</p>
+                                <div class="rating-scale small" data-rating="iq1">
+                                    <button type="button" data-value="1">1</button>
+                                    <button type="button" data-value="2">2</button>
+                                    <button type="button" data-value="3">3</button>
+                                    <button type="button" data-value="4">4</button>
+                                    <button type="button" data-value="5">5</button>
+                                </div>
+                                <input type="hidden" id="iq1">
+                            </div>
+                        </div>
+                        <div class="qual-item">
+                            <span class="qual-icon">🎯</span>
+                            <div>
+                                <h5>Especificidade dos Objetivos</h5>
+                                <p>As metas são mensuráveis, realistas e alinhadas com o tempo da mentoria?</p>
+                                <div class="rating-scale small" data-rating="iq2">
+                                    <button type="button" data-value="1">1</button>
+                                    <button type="button" data-value="2">2</button>
+                                    <button type="button" data-value="3">3</button>
+                                    <button type="button" data-value="4">4</button>
+                                    <button type="button" data-value="5">5</button>
+                                </div>
+                                <input type="hidden" id="iq2">
+                            </div>
+                        </div>
+                        <div class="qual-item">
+                            <span class="qual-icon">🗣️</span>
+                            <div>
+                                <h5>Capacidade de Verbalizar Dor e Meta</h5>
+                                <p>O mentorado consegue expressar claramente seus problemas e o que deseja alcançar?</p>
+                                <div class="rating-scale small" data-rating="iq3">
+                                    <button type="button" data-value="1">1</button>
+                                    <button type="button" data-value="2">2</button>
+                                    <button type="button" data-value="3">3</button>
+                                    <button type="button" data-value="4">4</button>
+                                    <button type="button" data-value="5">5</button>
+                                </div>
+                                <input type="hidden" id="iq3">
+                            </div>
+                        </div>
+                        <div class="qual-item">
+                            <span class="qual-icon">📈</span>
+                            <div>
+                                <h5>Evolução de Clareza (Diagnóstico → Kickoff)</h5>
+                                <p>Houve ganho significativo de clareza entre o preenchimento do formulário e a reunião de kickoff?</p>
+                                <div class="rating-scale small" data-rating="iq4">
+                                    <button type="button" data-value="1">1</button>
+                                    <button type="button" data-value="2">2</button>
+                                    <button type="button" data-value="3">3</button>
+                                    <button type="button" data-value="4">4</button>
+                                    <button type="button" data-value="5">5</button>
+                                </div>
+                                <input type="hidden" id="iq4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="indicadores-resumo" id="indicadoresResumo">
+                <h3>📊 Dashboard de Onboarding</h3>
+                <div class="dash-grid" id="dashGrid"></div>
+            </div>
+        </section>
+
+        <!-- Seção: Recursos -->
+        <section id="recursos" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Recursos e Ferramentas</h2>
+                <p class="section-desc">Tudo o que é necessário para operacionalizar o sistema de onboarding.</p>
+            </div>
+
+            <div class="recursos-section">
+                <h3>🔧 Ferramentas e Plataformas</h3>
+                <div class="recursos-grid">
+                    <div class="recurso-card obrigatorio">
+                        <div class="recurso-badge">Obrigatório</div>
+                        <span class="recurso-icon">📋</span>
+                        <h5>Formulário de Diagnóstico</h5>
+                        <p>Google Forms, Tally ou Typeform</p>
+                    </div>
+                    <div class="recurso-card obrigatorio">
+                        <div class="recurso-badge">Obrigatório</div>
+                        <span class="recurso-icon">📹</span>
+                        <h5>Videoconferência</h5>
+                        <p>Google Meet ou Zoom</p>
+                    </div>
+                    <div class="recurso-card obrigatorio">
+                        <div class="recurso-badge">Obrigatório</div>
+                        <span class="recurso-icon">💬</span>
+                        <h5>Canal de Suporte</h5>
+                        <p>WhatsApp</p>
+                    </div>
+                    <div class="recurso-card obrigatorio">
+                        <div class="recurso-badge">Obrigatório</div>
+                        <span class="recurso-icon">📁</span>
+                        <h5>Repositório de Materiais</h5>
+                        <p>Google Drive ou Notion</p>
+                    </div>
+                    <div class="recurso-card obrigatorio">
+                        <div class="recurso-badge">Obrigatório</div>
+                        <span class="recurso-icon">🤖</span>
+                        <h5>Ferramenta de IA</h5>
+                        <p>ChatGPT</p>
+                    </div>
+                    <div class="recurso-card obrigatorio">
+                        <div class="recurso-badge">Obrigatório</div>
+                        <span class="recurso-icon">📅</span>
+                        <h5>Agenda</h5>
+                        <p>Google Calendar</p>
+                    </div>
+                    <div class="recurso-card recomendado">
+                        <div class="recurso-badge">Recomendado</div>
+                        <span class="recurso-icon">📊</span>
+                        <h5>CRM/Acompanhamento</h5>
+                        <p>Planilha, Notion ou CRM simples</p>
+                    </div>
+                    <div class="recurso-card recomendado">
+                        <div class="recurso-badge">Recomendado</div>
+                        <span class="recurso-icon">📄</span>
+                        <h5>Templates</h5>
+                        <p>Ficha estratégica, plano de ação</p>
+                    </div>
+                    <div class="recurso-card recomendado">
+                        <div class="recurso-badge">Recomendado</div>
+                        <span class="recurso-icon">📈</span>
+                        <h5>Dashboard</h5>
+                        <p>Dashboard simples de progresso</p>
+                    </div>
+                    <div class="recurso-card recomendado">
+                        <div class="recurso-badge">Recomendado</div>
+                        <span class="recurso-icon">⚡</span>
+                        <h5>Automações</h5>
+                        <p>Envio de mensagens e lembretes</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recursos-section">
+                <h3>📦 Materiais Padronizados</h3>
+                <div class="materiais-list">
+                    <div class="material-item">
+                        <span class="material-icon">📋</span>
+                        <span>Formulário diagnóstico</span>
+                        <span class="material-tag">Essencial</span>
+                    </div>
+                    <div class="material-item">
+                        <span class="material-icon">💬</span>
+                        <span>Mensagem de boas-vindas</span>
+                        <span class="material-tag">Essencial</span>
+                    </div>
+                    <div class="material-item">
+                        <span class="material-icon">📄</span>
+                        <span>Documento de apresentação da mentoria</span>
+                        <span class="material-tag">Essencial</span>
+                    </div>
+                    <div class="material-item">
+                        <span class="material-icon">✅</span>
+                        <span>Checklist técnico</span>
+                        <span class="material-tag">Essencial</span>
+                    </div>
+                    <div class="material-item">
+                        <span class="material-icon">📊</span>
+                        <span>Ficha estratégica do mentorado</span>
+                        <span class="material-tag">Essencial</span>
+                    </div>
+                    <div class="material-item">
+                        <span class="material-icon">🗓️</span>
+                        <span>Plano individual da mentoria</span>
+                        <span class="material-tag">Essencial</span>
+                    </div>
+                    <div class="material-item">
+                        <span class="material-icon">📝</span>
+                        <span>Formulário de feedback</span>
+                        <span class="material-tag">Essencial</span>
+                    </div>
+                    <div class="material-item">
+                        <span class="material-icon">🏁</span>
+                        <span>Checklist de encerramento do onboarding</span>
+                        <span class="material-tag">Essencial</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recursos-section">
+                <h3>👥 Recursos Humanos</h3>
+                <div class="rh-grid">
+                    <div class="rh-card">
+                        <span class="rh-icon">👨‍🏫</span>
+                        <h5>Mentor Principal</h5>
+                        <p>Condução estratégica, análise de diagnóstico, condução dos encontros e feedback contínuo.</p>
+                    </div>
+                    <div class="rh-card">
+                        <span class="rh-icon">🧑‍💼</span>
+                        <h5>Assistente Operacional</h5>
+                        <p>Organização, lembretes, controle de documentos e suporte administrativo.</p>
+                    </div>
+                    <div class="rh-card">
+                        <span class="rh-icon">🔧</span>
+                        <h5>Suporte Técnico</h5>
+                        <p>Apoio em integrações, ambientes personalizados e questões técnicas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span class="toast-icon">✅</span>
+        <span class="toast-message" id="toastMessage">Mensagem</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

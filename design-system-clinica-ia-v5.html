@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design System v5.0 — clinica.IA | Ultra Detalhado</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM clinica.IA v5.0
+       Ultra Detalhado - Neon & Navy com Efeitos Avancados
+       ========================================================================== */
+
+    :root {
+      /* === CORE COLORS === */
+      --navy-950: #010205;
+      --navy-900: #02040A;
+      --navy-800: #050B14;
+      --navy-700: #0A1420;
+      --navy-600: #0F1D2C;
+      --navy-500: #142638;
+      --navy-400: #1A3044;
+      --navy-300: #203A50;
+      
+      --neon-500: #00E676;
+      --neon-400: #00FF80;
+      --neon-300: #33FF99;
+      --neon-200: #66FFB3;
+      --neon-100: #99FFCC;
+      
+      --cyan-500: #00E5FF;
+      --cyan-400: #00F0FF;
+      --cyan-300: #33F5FF;
+      --cyan-200: #66FAFF;
+      
+      --white: #FFFFFF;
+      --gray-100: #F0F4F8;
+      --gray-200: #D1D9E0;
+      --gray-300: #A8B4C0;
+      --gray-400: #7A8A9A;
+      --gray-500: #5A6A7A;
+      --gray-600: #3A4A5A;
+      
+      /* === SEMANTIC === */
+      --bg-primary: var(--navy-950);
+      --bg-secondary: var(--navy-900);
+      --bg-tertiary: var(--navy-800);
+      --bg-glass: rgba(0, 255, 128, 0.03);
+      --bg-glass-hover: rgba(0, 255, 128, 0.06);
+      
+      --text-primary: var(--white);
+      --text-secondary: var(--gray-200);
+      --text-tertiary: var(--gray-300);
+      --text-muted: var(--gray-400);
+      
+      --accent-neon: var(--neon-400);
+      --accent-cyan: var(--cyan-400);
+      --accent-gradient: linear-gradient(135deg, var(--neon-400) 0%, var(--cyan-400) 100%);
+      
+      --border-default: rgba(0, 255, 128, 0.08);
+      --border-hover: rgba(0, 255, 128, 0.15);
+      --border-active: rgba(0, 255, 128, 0.25);
+      
+      /* === SPACING === */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 96px;
+      --space-10: 128px;
+      
+      /* === TYPOGRAPHY === */
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Manrope', sans-serif;
+      --font-mono: 'DM Mono', monospace;
+      
+      /* === SHADOWS === */
+      --shadow-neon-sm: 0 0 10px rgba(0, 255, 128, 0.3), 0 0 20px rgba(0, 255, 128, 0.1);
+      --shadow-neon-md: 0 0 20px rgba(0, 255, 128, 0.4), 0 0 40px rgba(0, 255, 128, 0.15);
+      --shadow-neon-lg: 0 0 40px rgba(0, 255, 128, 0.5), 0 0 80px rgba(0, 255, 128, 0.2);
+      --shadow-cyan-sm: 0 0 10px rgba(0, 240, 255, 0.3), 0 0 20px rgba(0, 240, 255, 0.1);
+      --shadow-cyan-md: 0 0 20px rgba(0, 240, 255, 0.4), 0 0 40px rgba(0, 240, 255, 0.15);
+      
+      /* === ANIMATION === */
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --duration-fast: 150ms;
+      --duration-normal: 300ms;
+      --duration-slow: 500ms;
+    }
+
+    /* === RESET === */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-primary);
+      background: var(--bg-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* === BACKGROUND EFFECTS === */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    .bg-grid::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(0, 255, 128, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 128, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .bg-grid::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 20% 20%, rgba(0, 255, 128, 0.08) 0%, transparent 50%),
+                  radial-gradient(ellipse at 80% 80%, rgba(0, 240, 255, 0.05) 0%, transparent 50%),
+                  radial-gradient(ellipse at 50% 50%, rgba(0, 255, 128, 0.03) 0%, transparent 70%);
+    }
+
+    .noise-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* === CONTAINER === */
+    .container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 var(--space-5);
+    }
+
+    /* === NAVIGATION === */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px);
+      background: rgba(1, 2, 5, 0.8);
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .nav__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav__brand {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav__logo {
+      width: 36px;
+      height: 36px;
+      position: relative;
+    }
+
+    .nav__logo svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 10px rgba(0, 255, 128, 0.5));
+    }
+
+    .nav__logo::after {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 255, 128, 0.3) 0%, transparent 70%);
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .nav__link {
+      position: relative;
+      padding: var(--space-2) var(--space-3);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all var(--duration-fast) var(--ease-out);
+      overflow: hidden;
+    }
+
+    .nav__link::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 255, 128, 0.1) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity var(--duration-fast);
+    }
+
+    .nav__link:hover {
+      color: var(--accent-neon);
+    }
+
+    .nav__link:hover::before {
+      opacity: 1;
+    }
+
+    .nav__link--active {
+      color: var(--accent-neon);
+      background: rgba(0, 255, 128, 0.08);
+      border: 1px solid rgba(0, 255, 128, 0.2);
+    }
+
+    .nav__actions {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    /* === BUTTONS === */
+    .btn {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--navy-950);
+      background: var(--accent-neon);
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: all var(--duration-normal) var(--ease-out);
+      box-shadow: var(--shadow-neon-sm);
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%);
+      transform: translateX(-100%);
+      transition: transform var(--duration-slow);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-neon-md);
+    }
+
+    .btn:hover::before {
+      transform: translateX(100%);
+    }
+
+    .btn:active {
+      transform: translateY(0);
+    }
+
+    .btn--secondary {
+      color: var(--accent-neon);
+      background: transparent;
+      border: 1px solid var(--accent-neon);
+      box-shadow: none;
+    }
+
+    .btn--secondary:hover {
+      background: rgba(0, 255, 128, 0.1);
+      box-shadow: var(--shadow-neon-sm);
+    }
+
+    .btn--ghost {
+      color: var(--text-secondary);
+      background: transparent;
+      border: 1px solid var(--border-default);
+      box-shadow: none;
+    }
+
+    .btn--ghost:hover {
+      color: var(--text-primary);
+      border-color: var(--border-hover);
+      background: var(--bg-glass);
+    }
+
+    .btn--cyan {
+      background: var(--accent-cyan);
+      box-shadow: var(--shadow-cyan-sm);
+    }
+
+    .btn--cyan:hover {
+      box-shadow: var(--shadow-cyan-md);
+    }
+
+    .btn--sm {
+      padding: 8px 16px;
+      font-size: 11px;
+    }
+
+    .btn--lg {
+      padding: 16px 32px;
+      font-size: 14px;
+    }
+
+    /* === HERO === */
+    .hero {
+      position: relative;
+      padding: 160px 0 100px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      margin-bottom: var(--space-5);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent-neon);
+      background: rgba(0, 255, 128, 0.08);
+      border: 1px solid rgba(0, 255, 128, 0.2);
+      border-radius: 100px;
+      animation: fade-in-up 0.8s var(--ease-out) forwards;
+      opacity: 0;
+    }
+
+    .hero__badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent-neon);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-neon);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero__title {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 10vw, 120px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-4);
+      animation: fade-in-up 0.8s var(--ease-out) 0.1s forwards;
+      opacity: 0;
+    }
+
+    .hero__title-gradient {
+      background: linear-gradient(135deg, var(--accent-neon) 0%, var(--accent-cyan) 50%, var(--accent-neon) 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradient-shift 5s linear infinite;
+    }
+
+    @keyframes gradient-shift {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    .hero__subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto var(--space-5);
+      animation: fade-in-up 0.8s var(--ease-out) 0.2s forwards;
+      opacity: 0;
+    }
+
+    .hero__actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-3);
+      animation: fade-in-up 0.8s var(--ease-out) 0.3s forwards;
+      opacity: 0;
+    }
+
+    .hero__stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-6);
+      margin-top: var(--space-7);
+      padding-top: var(--space-5);
+      border-top: 1px solid var(--border-default);
+      animation: fade-in-up 0.8s var(--ease-out) 0.4s forwards;
+      opacity: 0;
+    }
+
+    .hero__stat {
+      text-align: center;
+    }
+
+    .hero__stat-value {
+      font-family: var(--font-display);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--accent-neon);
+      text-shadow: 0 0 20px rgba(0, 255, 128, 0.5);
+    }
+
+    .hero__stat-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* === SECTION === */
+    .section {
+      padding: var(--space-8) 0;
+      position: relative;
+    }
+
+    .section__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-6);
+    }
+
+    .section__number {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent-neon);
+      padding: 4px 10px;
+      background: rgba(0, 255, 128, 0.08);
+      border: 1px solid rgba(0, 255, 128, 0.2);
+      border-radius: 4px;
+    }
+
+    .section__title {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* === CARDS === */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-4);
+    }
+
+    .card {
+      position: relative;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-default);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all var(--duration-normal) var(--ease-out);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 255, 128, 0.05) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity var(--duration-normal);
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 128, 0.3) 50%, transparent 100%);
+    }
+
+    .card:hover {
+      border-color: var(--border-hover);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), var(--shadow-neon-sm);
+    }
+
+    .card:hover::before {
+      opacity: 1;
+    }
+
+    .card__body {
+      position: relative;
+      z-index: 1;
+      padding: var(--space-5);
+    }
+
+    .card__icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--space-3);
+      background: var(--bg-glass);
+      border: 1px solid var(--border-default);
+      border-radius: 12px;
+      color: var(--accent-neon);
+      box-shadow: var(--shadow-neon-sm);
+    }
+
+    .card__title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: var(--space-2);
+    }
+
+    .card__text {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* === COLOR SWATCHES === */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--space-3);
+    }
+
+    .color-swatch {
+      position: relative;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-default);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all var(--duration-normal);
+    }
+
+    .color-swatch:hover {
+      border-color: var(--border-hover);
+      transform: scale(1.02);
+    }
+
+    .color-swatch__preview {
+      height: 100px;
+      position: relative;
+    }
+
+    .color-swatch__preview--neon {
+      background: linear-gradient(135deg, var(--neon-400) 0%, var(--neon-300) 100%);
+      box-shadow: inset 0 0 40px rgba(0, 255, 128, 0.3);
+    }
+
+    .color-swatch__preview--cyan {
+      background: linear-gradient(135deg, var(--cyan-400) 0%, var(--cyan-300) 100%);
+      box-shadow: inset 0 0 40px rgba(0, 240, 255, 0.3);
+    }
+
+    .color-swatch__preview--navy {
+      background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 100%);
+    }
+
+    .color-swatch__glow {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity var(--duration-normal);
+    }
+
+    .color-swatch:hover .color-swatch__glow {
+      opacity: 1;
+    }
+
+    .color-swatch__glow--neon {
+      background: radial-gradient(circle at center, rgba(0, 255, 128, 0.4) 0%, transparent 70%);
+    }
+
+    .color-swatch__glow--cyan {
+      background: radial-gradient(circle at center, rgba(0, 240, 255, 0.4) 0%, transparent 70%);
+    }
+
+    .color-swatch__info {
+      padding: var(--space-3);
+    }
+
+    .color-swatch__name {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .color-swatch__value {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* === COMPONENT SHOWCASE === */
+    .showcase {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-default);
+      border-radius: 16px;
+      padding: var(--space-5);
+    }
+
+    .showcase__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-3);
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .showcase__title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .showcase__content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-3);
+      align-items: center;
+    }
+
+    /* === INPUTS === */
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .input {
+      width: 100%;
+      height: 48px;
+      padding: 0 var(--space-3);
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: var(--text-primary);
+      background: var(--bg-glass);
+      border: 1px solid var(--border-default);
+      border-radius: 8px;
+      transition: all var(--duration-fast);
+    }
+
+    .input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .input:hover {
+      border-color: var(--border-hover);
+      background: var(--bg-glass-hover);
+    }
+
+    .input:focus {
+      outline: none;
+      border-color: var(--accent-neon);
+      box-shadow: var(--shadow-neon-sm);
+      background: var(--bg-tertiary);
+    }
+
+    .input--with-icon {
+      padding-left: 44px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%237A8A9A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: 14px center;
+    }
+
+    /* === BADGES === */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 4px;
+    }
+
+    .badge--neon {
+      color: var(--navy-950);
+      background: var(--accent-neon);
+      box-shadow: var(--shadow-neon-sm);
+    }
+
+    .badge--outline {
+      color: var(--accent-neon);
+      background: rgba(0, 255, 128, 0.08);
+      border: 1px solid rgba(0, 255, 128, 0.3);
+    }
+
+    .badge--subtle {
+      color: var(--text-muted);
+      background: var(--bg-glass);
+      border: 1px solid var(--border-default);
+    }
+
+    /* === ALERTS === */
+    .alert {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+      padding: var(--space-3);
+      border-radius: 8px;
+      border-left: 3px solid;
+    }
+
+    .alert--success {
+      background: rgba(0, 255, 128, 0.08);
+      border-color: var(--accent-neon);
+    }
+
+    .alert--error {
+      background: rgba(255, 71, 87, 0.08);
+      border-color: #FF4757;
+    }
+
+    .alert__icon {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+    }
+
+    .alert__content {
+      flex: 1;
+    }
+
+    .alert__title {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .alert__text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* === PROGRESS === */
+    .progress {
+      width: 100%;
+      height: 6px;
+      background: var(--bg-glass);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .progress__bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent-neon) 0%, var(--accent-cyan) 100%);
+      border-radius: 3px;
+      box-shadow: var(--shadow-neon-sm);
+      transition: width 1s var(--ease-spring);
+    }
+
+    /* === SPINNER === */
+    .spinner {
+      width: 24px;
+      height: 24px;
+      border: 2px solid var(--border-default);
+      border-top-color: var(--accent-neon);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* === TOGGLE === */
+    .toggle {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .toggle__input {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle__track {
+      position: relative;
+      width: 48px;
+      height: 26px;
+      background: var(--bg-glass);
+      border: 1px solid var(--border-default);
+      border-radius: 13px;
+      transition: all var(--duration-normal);
+    }
+
+    .toggle__thumb {
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      width: 20px;
+      height: 20px;
+      background: var(--text-muted);
+      border-radius: 50%;
+      transition: all var(--duration-normal) var(--ease-spring);
+    }
+
+    .toggle__input:checked + .toggle__track {
+      background: rgba(0, 255, 128, 0.2);
+      border-color: var(--accent-neon);
+    }
+
+    .toggle__input:checked + .toggle__track .toggle__thumb {
+      transform: translateX(22px);
+      background: var(--accent-neon);
+      box-shadow: 0 0 10px var(--accent-neon);
+    }
+
+    /* === CODE BLOCK === */
+    .code-block {
+      background: var(--navy-900);
+      border: 1px solid var(--border-default);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .code-block__header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-3);
+      background: var(--navy-800);
+      border-bottom: 1px solid var(--border-default);
+    }
+
+    .code-block__dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .code-block__dot--red { background: #FF5F56; }
+    .code-block__dot--yellow { background: #FFBD2E; }
+    .code-block__dot--green { background: #27C93F; }
+
+    .code-block__content {
+      padding: var(--space-3);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--text-secondary);
+      overflow-x: auto;
+    }
+
+    .code-block__content .token--comment { color: var(--gray-500); }
+    .code-block__content .token--property { color: var(--accent-cyan); }
+    .code-block__content .token--value { color: var(--accent-neon); }
+    .code-block__content .token--punctuation { color: var(--gray-400); }
+
+    /* === FOOTER === */
+    .footer {
+      padding: var(--space-6) 0;
+      border-top: 1px solid var(--border-default);
+      text-align: center;
+    }
+
+    .footer__text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .footer__brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--accent-neon);
+    }
+
+    /* === SCROLLBAR === */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border-default);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--border-hover);
+    }
+
+    /* === SELECTION === */
+    ::selection {
+      background: rgba(0, 255, 128, 0.3);
+      color: var(--white);
+    }
+  </style>
+</head>
+<body>
+  <!-- Background Effects -->
+  <div class="bg-grid"></div>
+  <div class="noise-overlay"></div>
+
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="container nav__inner">
+      <a href="#" class="nav__brand">
+        <div class="nav__logo">
+          <svg viewBox="0 0 36 36" fill="none">
+            <rect x="2" y="2" width="32" height="32" rx="8" stroke="currentColor" stroke-width="2" fill="none"/>
+            <path d="M10 18L16 24L26 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        clinica.IA
+      </a>
+      <div class="nav__links">
+        <a href="#cores" class="nav__link">Cores</a>
+        <a href="#tipografia" class="nav__link">Tipo</a>
+        <a href="#componentes" class="nav__link">UI</a>
+        <a href="#codigo" class="nav__link">Codigo</a>
+      </div>
+      <div class="nav__actions">
+        <button class="btn btn--sm btn--secondary">Documentacao</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        v5.0 — Ultra Detalhado
+      </div>
+      <h1 class="hero__title">
+        <span class="hero__title-gradient">clinica.IA</span>
+      </h1>
+      <p class="hero__subtitle">
+        Design system com efeitos avancados, neon glow, glassmorphism e animacoes fluidas. 
+        Identidade visual Neon & Navy para produtos de saude digital.
+      </p>
+      <div class="hero__actions">
+        <button class="btn">Explorar Componentes</button>
+        <button class="btn btn--secondary">Ver Documentacao</button>
+      </div>
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <div class="hero__stat-value">50+</div>
+          <div class="hero__stat-label">Componentes</div>
+        </div>
+        <div class="hero__stat">
+          <div class="hero__stat-value">100%</div>
+          <div class="hero__stat-label">Customizavel</div>
+        </div>
+        <div class="hero__stat">
+          <div class="hero__stat-value">AA</div>
+          <div class="hero__stat-label">Acessibilidade</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Colors Section -->
+    <section class="section" id="cores">
+      <div class="section__header">
+        <span class="section__number">01</span>
+        <h2 class="section__title">Paleta de Cores</h2>
+      </div>
+      
+      <div class="card-grid">
+        <div class="card">
+          <div class="card__body">
+            <div class="card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2v20"/>
+              </svg>
+            </div>
+            <h3 class="card__title">Neon Verde</h3>
+            <p class="card__text">Cor primaria de destaque. Energia, tecnologia e inovacao. Alto contraste no fundo escuro.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__body">
+            <div class="card__icon" style="color: var(--accent-cyan); box-shadow: var(--shadow-cyan-sm);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M12 2v20"/>
+              </svg>
+            </div>
+            <h3 class="card__title">Cyan Neon</h3>
+            <p class="card__text">Cor secundaria complementar. Futurismo e tecnologia avancada.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__body">
+            <div class="card__icon" style="color: var(--text-primary);">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+              </svg>
+            </div>
+            <h3 class="card__title">Azul Marinho</h3>
+            <p class="card__text">Fundo profundo e sofisticado. Base para toda a identidade visual.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="color-grid" style="margin-top: var(--space-5);">
+        <div class="color-swatch">
+          <div class="color-swatch__preview color-swatch__preview--neon">
+            <div class="color-swatch__glow color-swatch__glow--neon"></div>
+          </div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">neon-400</div>
+            <div class="color-swatch__value">#00FF80</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview color-swatch__preview--neon" style="background: linear-gradient(135deg, var(--neon-300) 0%, var(--neon-200) 100%);">
+            <div class="color-swatch__glow color-swatch__glow--neon"></div>
+          </div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">neon-300</div>
+            <div class="color-swatch__value">#33FF99</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview color-swatch__preview--cyan">
+            <div class="color-swatch__glow color-swatch__glow--cyan"></div>
+          </div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">cyan-400</div>
+            <div class="color-swatch__value">#00F0FF</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview color-swatch__preview--cyan" style="background: linear-gradient(135deg, var(--cyan-300) 0%, var(--cyan-200) 100%);">
+            <div class="color-swatch__glow color-swatch__glow--cyan"></div>
+          </div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">cyan-300</div>
+            <div class="color-swatch__value">#33F5FF</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview color-swatch__preview--navy"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">navy-950</div>
+            <div class="color-swatch__value">#010205</div>
+          </div>
+        </div>
+        <div class="color-swatch">
+          <div class="color-swatch__preview color-swatch__preview--navy" style="background: linear-gradient(135deg, var(--navy-800) 0%, var(--navy-700) 100%);"></div>
+          <div class="color-swatch__info">
+            <div class="color-swatch__name">navy-800</div>
+            <div class="color-swatch__value">#050B14</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Typography Section -->
+    <section class="section" id="tipografia">
+      <div class="section__header">
+        <span class="section__number">02</span>
+        <h2 class="section__title">Tipografia</h2>
+      </div>
+
+      <div class="showcase">
+        <div class="showcase__header">
+          <span class="showcase__title">Hierarquia Tipografica</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+          <div>
+            <div style="font-family: var(--font-display); font-size: 48px; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">
+              Display Heading
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+              Space Grotesk — 48px — Bold
+            </div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-display); font-size: 32px; font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">
+              Section Heading
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+              Space Grotesk — 32px — Semibold
+            </div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-body); font-size: 18px; font-weight: 500; color: var(--text-secondary); margin-bottom: 4px;">
+              Body text com Manrope. Excelente legibilidade e apelo moderno para interfaces digitais.
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+              Manrope — 18px — Medium
+            </div>
+          </div>
+          <div>
+            <div style="font-family: var(--font-mono); font-size: 12px; font-weight: 500; color: var(--accent-neon); margin-bottom: 4px;">
+              LABEL TEXT — MONOSPACE
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted);">
+              DM Mono — 12px — Medium
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Components Section -->
+    <section class="section" id="componentes">
+      <div class="section__header">
+        <span class="section__number">03</span>
+        <h2 class="section__title">Componentes</h2>
+      </div>
+
+      <div class="card-grid">
+        <!-- Buttons -->
+        <div class="showcase">
+          <div class="showcase__header">
+            <span class="showcase__title">Botoes</span>
+          </div>
+          <div class="showcase__content">
+            <button class="btn">Primario</button>
+            <button class="btn btn--secondary">Secundario</button>
+            <button class="btn btn--ghost">Ghost</button>
+            <button class="btn btn--cyan">Cyan</button>
+            <button class="btn btn--sm">Small</button>
+            <button class="btn btn--lg">Large</button>
+          </div>
+        </div>
+
+        <!-- Inputs -->
+        <div class="showcase">
+          <div class="showcase__header">
+            <span class="showcase__title">Inputs</span>
+          </div>
+          <div class="showcase__content" style="flex-direction: column; align-items: stretch;">
+            <input type="text" class="input" placeholder="Placeholder text...">
+            <input type="text" class="input input--with-icon" placeholder="Search...">
+          </div>
+        </div>
+
+        <!-- Badges -->
+        <div class="showcase">
+          <div class="showcase__header">
+            <span class="showcase__title">Badges</span>
+          </div>
+          <div class="showcase__content">
+            <span class="badge badge--neon">NEON</span>
+            <span class="badge badge--outline">OUTLINE</span>
+            <span class="badge badge--subtle">SUBTLE</span>
+          </div>
+        </div>
+
+        <!-- Alerts -->
+        <div class="showcase">
+          <div class="showcase__header">
+            <span class="showcase__title">Alertas</span>
+          </div>
+          <div class="showcase__content" style="flex-direction: column; align-items: stretch;">
+            <div class="alert alert--success">
+              <svg class="alert__icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+              </svg>
+              <div class="alert__content">
+                <div class="alert__title" style="color: var(--accent-neon);">Sucesso</div>
+                <div class="alert__text">Operacao concluida com sucesso.</div>
+              </div>
+            </div>
+            <div class="alert alert--error">
+              <svg class="alert__icon" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z"/>
+              </svg>
+              <div class="alert__content">
+                <div class="alert__title" style="color: #FF4757;">Erro</div>
+                <div class="alert__text">Algo deu errado. Tente novamente.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="showcase">
+          <div class="showcase__header">
+            <span class="showcase__title">Progresso</span>
+          </div>
+          <div class="showcase__content" style="flex-direction: column; align-items: stretch; gap: var(--space-3);">
+            <div class="progress">
+              <div class="progress__bar" style="width: 75%;"></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: var(--space-3);">
+              <div class="spinner"></div>
+              <span style="font-size: 12px; color: var(--text-muted);">Carregando...</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Toggle -->
+        <div class="showcase">
+          <div class="showcase__header">
+            <span class="showcase__title">Toggle</span>
+          </div>
+          <div class="showcase__content">
+            <label class="toggle">
+              <input type="checkbox" class="toggle__input">
+              <div class="toggle__track">
+                <div class="toggle__thumb"></div>
+              </div>
+              <span style="font-size: 13px; color: var(--text-secondary);">Off</span>
+            </label>
+            <label class="toggle">
+              <input type="checkbox" class="toggle__input" checked>
+              <div class="toggle__track">
+                <div class="toggle__thumb"></div>
+              </div>
+              <span style="font-size: 13px; color: var(--accent-neon);">On</span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Code Section -->
+    <section class="section" id="codigo">
+      <div class="section__header">
+        <span class="section__number">04</span>
+        <h2 class="section__title">Tokens CSS</h2>
+      </div>
+
+      <div class="code-block">
+        <div class="code-block__header">
+          <span class="code-block__dot code-block__dot--red"></span>
+          <span class="code-block__dot code-block__dot--yellow"></span>
+          <span class="code-block__dot code-block__dot--green"></span>
+          <span style="margin-left: auto; font-size: 11px; color: var(--text-muted);">tokens.css</span>
+        </div>
+        <div class="code-block__content">
+          <div><span class="token--comment">/* Cores Neon */</span></div>
+          <div><span class="token--property">--neon-400</span><span class="token--punctuation">:</span> <span class="token--value">#00FF80</span><span class="token--punctuation">;</span></div>
+          <div><span class="token--property">--neon-300</span><span class="token--punctuation">:</span> <span class="token--value">#33FF99</span><span class="token--punctuation">;</span></div>
+          <div><span class="token--property">--cyan-400</span><span class="token--punctuation">:</span> <span class="token--value">#00F0FF</span><span class="token--punctuation">;</span></div>
+          <div><span class="token--property">--cyan-300</span><span class="token--punctuation">:</span> <span class="token--value">#33F5FF</span><span class="token--punctuation">;</span></div>
+          <div>&nbsp;</div>
+          <div><span class="token--comment">/* Fundos */</span></div>
+          <div><span class="token--property">--navy-950</span><span class="token--punctuation">:</span> <span class="token--value">#010205</span><span class="token--punctuation">;</span></div>
+          <div><span class="token--property">--navy-900</span><span class="token--punctuation">:</span> <span class="token--value">#02040A</span><span class="token--punctuation">;</span></div>
+          <div><span class="token--property">--navy-800</span><span class="token--punctuation">:</span> <span class="token--value">#050B14</span><span class="token--punctuation">;</span></div>
+          <div>&nbsp;</div>
+          <div><span class="token--comment">/* Sombras Neon */</span></div>
+          <div><span class="token--property">--shadow-neon</span><span class="token--punctuation">:</span> <span class="token--value">0 0 20px rgba(0, 255, 128, 0.4)</span><span class="token--punctuation">;</span></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__text">
+        <span class="footer__brand">clinica.IA</span> Design System v5.0 — Neon & Navy
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
