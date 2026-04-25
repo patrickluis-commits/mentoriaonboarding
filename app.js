@@ -30,6 +30,94 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================
+  // MENTORADOS (CRUD)
+  // ==========================================================
+  function getMentorados() {
+    return loadLocal('mentorados', []);
+  }
+  function setMentorados(lista) {
+    saveLocal('mentorados', lista);
+  }
+
+  function renderMentorados() {
+    const container = $('#listaMentorados');
+    if (!container) return;
+    const lista = getMentorados();
+    if (lista.length === 0) {
+      container.innerHTML = '<p style="color:var(--text-muted);font-size:.9rem;">Nenhum mentorado cadastrado ainda.</p>';
+      return;
+    }
+    container.innerHTML = lista.map((m, i) => `
+      <div class="mentorado-card" data-index="${i}">
+        <div class="mentorado-avatar">${(m.nome || 'M').charAt(0).toUpperCase()}</div>
+        <div class="mentorado-info">
+          <strong>${m.nome}</strong>
+          <span>${m.email} ${m.nicho ? '• ' + m.nicho : ''}</span>
+        </div>
+        <div class="mentorado-actions">
+          <button class="btn-edit" onclick="window.editarMentorado(${i})">✏️ Editar</button>
+          <button class="btn-delete" onclick="window.removerMentorado(${i})">🗑️ Excluir</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  window.editarMentorado = function(index) {
+    const lista = getMentorados();
+    const m = lista[index];
+    if (!m) return;
+    const novoNome = prompt('Nome:', m.nome);
+    if (novoNome === null) return;
+    const novoEmail = prompt('Email:', m.email);
+    if (novoEmail === null) return;
+    const novaSenha = prompt('Senha:', m.senha);
+    if (novaSenha === null) return;
+    const novoNicho = prompt('Nicho:', m.nicho || '');
+    if (novoNicho === null) return;
+    const novaObs = prompt('Observações:', m.obs || '');
+    if (novaObs === null) return;
+    lista[index] = { ...m, nome: novoNome, email: novoEmail.toLowerCase().trim(), senha: novaSenha, nicho: novoNicho, obs: novaObs };
+    setMentorados(lista);
+    renderMentorados();
+    showToast('Mentorado atualizado!', '✅');
+  };
+
+  window.removerMentorado = function(index) {
+    if (!confirm('Tem certeza que deseja remover este mentorado?')) return;
+    const lista = getMentorados();
+    lista.splice(index, 1);
+    setMentorados(lista);
+    renderMentorados();
+    showToast('Mentorado removido.', '🗑️');
+  };
+
+  if ($('#formNovoMentorado')) {
+    $('#formNovoMentorado').addEventListener('submit', e => {
+      e.preventDefault();
+      const nome = $('#m_nome').value.trim();
+      const email = $('#m_email').value.toLowerCase().trim();
+      const senha = $('#m_senha').value;
+      const nicho = $('#m_nicho').value.trim();
+      const obs = $('#m_obs').value.trim();
+      if (!nome || !email || !senha) {
+        showToast('Preencha nome, email e senha.', '⚠️');
+        return;
+      }
+      const lista = getMentorados();
+      if (lista.some(m => m.email === email)) {
+        showToast('Este email já está cadastrado.', '⚠️');
+        return;
+      }
+      lista.push({ nome, email, senha, nicho, obs, data: new Date().toISOString() });
+      setMentorados(lista);
+      renderMentorados();
+      $('#formNovoMentorado').reset();
+      showToast('Mentorado cadastrado com sucesso!', '✅');
+    });
+  }
+  renderMentorados();
+
+  // ==========================================================
   // AUTENTICAÇÃO / LOGIN
   // ==========================================================
   const loginScreen = $('#loginScreen');
@@ -45,8 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const CREDENCIAIS = {
-    'mentor@clinica.ia': { senha: 'mentor123', tipo: 'mentor', nome: 'Mentor' },
-    'mentorado@clinica.ia': { senha: 'mentorado123', tipo: 'mentorado', nome: 'Mentorado' }
+    'mentor@clinica.ia': { senha: 'mentor123', tipo: 'mentor', nome: 'Mentor' }
   };
 
   function aplicarPermissoes(tipo) {
@@ -87,18 +174,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function criarSessao(email, tipo, nome) {
+    saveLocal('session', { email: email.toLowerCase().trim(), tipo, nome });
+  }
+
   function fazerLogin(email, senha, tipo) {
-    const user = CREDENCIAIS[email.toLowerCase().trim()];
-    if (!user || user.senha !== senha) {
-      showToast('Email ou senha incorretos.', '❌');
-      return false;
+    const key = email.toLowerCase().trim();
+    // Verifica credenciais fixas do mentor
+    const fixed = CREDENCIAIS[key];
+    if (fixed && fixed.senha === senha) {
+      if (tipo && fixed.tipo !== tipo) {
+        showToast(`Esta conta é de ${fixed.tipo}. Selecione o tipo correto.`, '⚠️');
+        return false;
+      }
+      criarSessao(email, fixed.tipo, fixed.nome);
+      return true;
     }
-    if (user.tipo !== tipo) {
-      showToast(`Esta conta é de ${user.tipo}. Selecione o tipo correto.`, '⚠️');
-      return false;
+    // Verifica mentorados cadastrados
+    const mentorados = getMentorados();
+    const found = mentorados.find(m => m.email === key && m.senha === senha);
+    if (found) {
+      if (tipo && tipo !== 'mentorado') {
+        showToast('Mentorados devem entrar como Mentorado.', '⚠️');
+        return false;
+      }
+      criarSessao(email, 'mentorado', found.nome);
+      return true;
     }
-    saveLocal('session', { email: email.toLowerCase().trim(), tipo: user.tipo, nome: user.nome });
-    return true;
+    showToast('Email ou senha incorretos.', '❌');
+    return false;
   }
 
   function fazerLogout() {
@@ -109,11 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function verificarSessao() {
     const session = loadLocal('session', null);
     if (!session) {
-      // Mostrar login
       if (loginScreen) loginScreen.classList.remove('hidden');
       return false;
     }
-    // Esconder login e aplicar permissões
     if (loginScreen) loginScreen.classList.add('hidden');
     aplicarPermissoes(session.tipo);
     return true;
@@ -126,10 +228,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const senha = $('#loginSenha').value;
       const tipo = $('input[name="loginType"]:checked')?.value || 'mentorado';
       if (fazerLogin(email, senha, tipo)) {
-        showToast(`Bem-vindo, ${tipo === 'mentor' ? 'Mentor' : 'Mentorado'}!`, '✅');
+        const session = loadLocal('session');
+        showToast(`Bem-vindo, ${session.nome}!`, '✅');
         if (loginScreen) loginScreen.classList.add('hidden');
-        aplicarPermissoes(tipo);
-        // Mostrar primeira seção disponível
+        aplicarPermissoes(session.tipo);
         showSection('home');
       }
     });
@@ -137,6 +239,91 @@ document.addEventListener('DOMContentLoaded', () => {
 
   $('#btnLogout')?.addEventListener('click', fazerLogout);
   $('#btnLogoutMobile')?.addEventListener('click', fazerLogout);
+
+  // ==========================================================
+  // LOGIN COM GOOGLE (Google Identity Services)
+  // ==========================================================
+  const GOOGLE_CLIENT_ID = ''; // << Substitua pelo seu Client ID do Google Cloud Console
+
+  function handleGoogleCredentialResponse(response) {
+    // Decodifica o JWT do Google para obter dados do usuário
+    const payload = JSON.parse(atob(response.credential.split('.')[1]));
+    const email = payload.email;
+    const nome = payload.name || payload.given_name || 'Usuário Google';
+
+    // Verifica se é mentorado cadastrado
+    const mentorados = getMentorados();
+    const found = mentorados.find(m => m.email.toLowerCase() === email.toLowerCase());
+    if (found) {
+      criarSessao(email, 'mentorado', found.nome);
+      showToast(`Bem-vindo, ${found.nome}!`, '✅');
+      if (loginScreen) loginScreen.classList.add('hidden');
+      aplicarPermissoes('mentorado');
+      showSection('home');
+      return;
+    }
+
+    // Se não encontrou, verifica se é o mentor
+    if (email.toLowerCase() === 'mentor@clinica.ia') {
+      criarSessao(email, 'mentor', 'Mentor');
+      showToast('Bem-vindo, Mentor!', '✅');
+      if (loginScreen) loginScreen.classList.add('hidden');
+      aplicarPermissoes('mentor');
+      showSection('home');
+      return;
+    }
+
+    showToast('Este email não está cadastrado. Peça ao mentor para cadastrá-lo.', '❌');
+  }
+
+  function initGoogleSignIn() {
+    if (!GOOGLE_CLIENT_ID) {
+      // Modo demo: botão alternativo
+      const container = $('#g_id_signin');
+      if (container) {
+        container.innerHTML = '<button type="button" id="btnGoogleDemo" class="btn btn--secondary" style="width:100%;">🔷 Entrar com Google (Demo)</button>';
+        $('#btnGoogleDemo')?.addEventListener('click', () => {
+          const email = prompt('Simulação Google Login\n\nDigite o email do mentorado:');
+          if (!email) return;
+          const mentorados = getMentorados();
+          const found = mentorados.find(m => m.email.toLowerCase() === email.toLowerCase().trim());
+          if (found) {
+            criarSessao(email, 'mentorado', found.nome);
+            showToast(`Bem-vindo, ${found.nome}! (Google Demo)`, '✅');
+            if (loginScreen) loginScreen.classList.add('hidden');
+            aplicarPermissoes('mentorado');
+            showSection('home');
+          } else if (email.toLowerCase().trim() === 'mentor@clinica.ia') {
+            criarSessao(email, 'mentor', 'Mentor');
+            showToast('Bem-vindo, Mentor! (Google Demo)', '✅');
+            if (loginScreen) loginScreen.classList.add('hidden');
+            aplicarPermissoes('mentor');
+            showSection('home');
+          } else {
+            showToast('Email não cadastrado.', '❌');
+          }
+        });
+      }
+      return;
+    }
+
+    // Inicializa o Google Identity Services real
+    if (window.google && google.accounts && google.accounts.id) {
+      google.accounts.id.initialize({
+        client_id: GOOGLE_CLIENT_ID,
+        callback: handleGoogleCredentialResponse,
+        auto_select: false,
+        cancel_on_tap_outside: true
+      });
+      google.accounts.id.renderButton(
+        document.getElementById('g_id_signin'),
+        { theme: 'filled_black', size: 'large', width: '100%', shape: 'pill', text: 'signin_with' }
+      );
+    }
+  }
+
+  // Tenta inicializar o Google Sign-In após um pequeno delay
+  setTimeout(initGoogleSignIn, 1000);
 
   const isLoggedIn = verificarSessao();
 

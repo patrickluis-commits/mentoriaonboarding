@@ -1826,3 +1826,215 @@ body.is-mentor .section[data-restrict="mentor"].active {
   background: rgba(0, 240, 255, 0.08);
   border: 1px solid rgba(0, 240, 255, 0.2);
 }
+
+/* ---- Google Sign-In Button Container ---- */
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: .8rem;
+  margin: 4px 0;
+}
+.login-divider::before,
+.login-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--border-default);
+}
+
+/* ---- Footer Contatos ---- */
+.app-footer {
+  position: relative;
+  z-index: 2;
+  margin-left: var(--sidebar-width);
+  border-top: 1px solid var(--border-default);
+  background: var(--bg-secondary);
+  padding: 32px;
+}
+
+.footer-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-brand .logo-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-neon);
+  color: var(--navy-950);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: .85rem;
+  box-shadow: var(--shadow-neon-sm);
+  flex-shrink: 0;
+}
+
+.footer-brand strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--text-primary);
+}
+
+.footer-brand span {
+  font-size: .8rem;
+  color: var(--text-muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-size: .85rem;
+  color: var(--text-secondary);
+  transition: all var(--duration-fast);
+}
+
+.footer-link:hover {
+  border-color: var(--accent-neon);
+  color: var(--accent-neon);
+  background: rgba(0, 255, 128, 0.05);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-default);
+}
+
+.footer-bottom p {
+  font-size: .75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+/* ---- Lista de Mentorados ---- */
+.mentorados-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.mentorados-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mentorado-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  transition: all var(--duration-fast);
+}
+
+.mentorado-card:hover {
+  border-color: var(--border-hover);
+}
+
+.mentorado-avatar {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-cyan);
+  color: var(--navy-950);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.mentorado-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mentorado-info strong {
+  display: block;
+  font-size: .95rem;
+  color: var(--text-primary);
+  margin-bottom: 2px;
+}
+
+.mentorado-info span {
+  display: block;
+  font-size: .8rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.mentorado-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.mentorado-actions button {
+  padding: 6px 12px;
+  font-size: .8rem;
+  border-radius: 6px;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+}
+
+.mentorado-actions .btn-edit {
+  background: transparent;
+  border: 1px solid var(--border-default);
+  color: var(--text-secondary);
+}
+
+.mentorado-actions .btn-edit:hover {
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.mentorado-actions .btn-delete {
+  background: transparent;
+  border: 1px solid rgba(255, 71, 87, 0.3);
+  color: #FF4757;
+}
+
+.mentorado-actions .btn-delete:hover {
+  background: rgba(255, 71, 87, 0.1);
+}
+
+@media (max-width: 768px) {
+  .app-footer { margin-left: 0; padding: 24px 20px; }
+  .footer-content { flex-direction: column; gap: 16px; }
+  .footer-links { width: 100%; }
+  .mentorado-card { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .mentorado-actions { width: 100%; justify-content: flex-end; }
+}

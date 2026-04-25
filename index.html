@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 <body>
     <!-- Background Effects -->
@@ -45,6 +46,8 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn--lg" style="width:100%;">Entrar</button>
+                <div class="login-divider"><span>ou</span></div>
+                <div id="g_id_signin"></div>
             </form>
             <div class="login-hint">
                 <p><strong>Demo — Credenciais:</strong></p>
@@ -79,6 +82,7 @@
             <li><a href="#kit" class="nav-link" data-section="kit"><span class="nav-icon">🎒</span> Kit Onboarding</a></li>
             <li><a href="#trilha" class="nav-link" data-section="trilha"><span class="nav-icon">🗓️</span> Trilha 5 Dias</a></li>
             <li><a href="#indicadores" class="nav-link" data-section="indicadores" data-hide-for="mentorado"><span class="nav-icon">📈</span> Indicadores</a></li>
+            <li><a href="#mentorados" class="nav-link" data-section="mentorados" data-hide-for="mentorado"><span class="nav-icon">👥</span> Mentorados</a></li>
             <li><a href="#recursos" class="nav-link" data-section="recursos"><span class="nav-icon">🛠️</span> Recursos</a></li>
         </ul>
         <div class="sidebar-footer">
@@ -252,7 +256,7 @@
                                 </ul>
                             </div>
                             <div class="step-meta">
-                                <span class="tag">Canal: WhatsApp + E-mail</span>
+                                <span class="tag">📱 WhatsApp: +55 91 99275-4425</span>
                             </div>
                         </div>
                     </div>
@@ -464,7 +468,7 @@
                                 <div class="cp-q">❓ Precisamos ajustar o foco?</div>
                             </div>
                             <div class="step-meta">
-                                <span class="tag">Formato: WhatsApp, formulário curto ou microchamada</span>
+                                <span class="tag">📱 WhatsApp: +55 91 99275-4425</span>
                             </div>
                         </div>
                     </div>
@@ -1032,10 +1036,12 @@
                             </ul>
                             <h5>Regras de Comunicação</h5>
                             <ul>
-                                <li>Canal principal: WhatsApp para dúvidas rápidas</li>
+                                <li>📱 WhatsApp: <a href="https://wa.me/5591992754425" target="_blank" style="color:var(--accent-neon)">+55 91 99275-4425</a></li>
+                                <li>✉️ Email: <a href="mailto:clinica.ia.mentoria@gmail.com" style="color:var(--accent-neon)">clinica.ia.mentoria@gmail.com</a></li>
+                                <li>🌐 Site: <a href="https://www.clinicaia.ia.br" target="_blank" style="color:var(--accent-neon)">www.clinicaia.ia.br</a></li>
+                                <li>📸 Instagram: <a href="https://instagram.com/clinica_ia" target="_blank" style="color:var(--accent-neon)">@clinica_ia</a></li>
                                 <li>Prazo de resposta: até 24h úteis</li>
                                 <li>Agendamento: com antecedência mínima de 48h</li>
-                                <li>Material para análise: enviar com 24h de antecedência</li>
                             </ul>
                         </div>
                     </div>
@@ -1133,7 +1139,7 @@
                                     <h5>✅ O que a mentoria entrega</h5>
                                     <ul>
                                         <li>6 encontros individuais de até 90 minutos</li>
-                                        <li>Suporte via WhatsApp entre sessões</li>
+                                        <li>Suporte via WhatsApp: +55 91 99275-4425</li>
                                         <li>Materiais personalizados por nicho</li>
                                         <li>Orientação prática e aplicada</li>
                                         <li>Feedback contínuo sobre entregáveis</li>
@@ -1189,7 +1195,7 @@
                                 <div class="tool-card">
                                     <span class="tool-icon">💬</span>
                                     <h5>Suporte</h5>
-                                    <p>WhatsApp</p>
+                                    <p>WhatsApp: +55 91 99275-4425</p>
                                     <span class="tool-tag">Obrigatório</span>
                                 </div>
                                 <div class="tool-card">
@@ -1240,7 +1246,7 @@
                             <div class="checklist-big" data-checklist="tecnico">
                                 <label class="check-item-big"><input type="checkbox"><span>Conta ativa no ChatGPT (preferencialmente Plus)</span></label>
                                 <label class="check-item-big"><input type="checkbox"><span>Conta Google ativa (Gmail, Drive, Calendar)</span></label>
-                                <label class="check-item-big"><input type="checkbox"><span>WhatsApp disponível para suporte</span></label>
+                                <label class="check-item-big"><input type="checkbox"><span>WhatsApp disponível para suporte (+55 91 99275-4425)</span></label>
                                 <label class="check-item-big"><input type="checkbox"><span>Pasta criada para organizar materiais da mentoria</span></label>
                                 <label class="check-item-big"><input type="checkbox"><span>Agenda dos 6 encontros confirmada</span></label>
                                 <label class="check-item-big"><input type="checkbox"><span>Teste de áudio e vídeo realizado</span></label>
@@ -1354,9 +1360,9 @@
                             <label class="check-item"><input type="checkbox"><span>Apresentar brevemente a estrutura da mentoria</span></label>
                             <label class="check-item"><input type="checkbox"><span>Enviar link do questionário diagnóstico</span></label>
                             <label class="check-item"><input type="checkbox"><span>Informar prazo de resposta (24-48h)</span></label>
-                            <label class="check-item"><input type="checkbox"><span>Confirmar canal de comunicação principal</span></label>
+                            <label class="check-item"><input type="checkbox"><span>Confirmar canal de comunicação principal (WhatsApp +55 91 99275-4425)</span></label>
                         </div>
-                        <div class="day-meta">⏱️ Tempo estimado: 10 min | Canal: WhatsApp + E-mail</div>
+                        <div class="day-meta">⏱️ Tempo estimado: 10 min | 📱 WhatsApp: +55 91 99275-4425</div>
                     </div>
                 </div>
 
@@ -1429,7 +1435,7 @@
                             <label class="check-item"><input type="checkbox"><span>Compartilhar links e acessos necessários</span></label>
                             <label class="check-item"><input type="checkbox"><span>Agendar checkpoint para 5-7 dias</span></label>
                         </div>
-                        <div class="day-meta">⏱️ Tempo estimado: 15 min | Canal: WhatsApp + E-mail</div>
+                        <div class="day-meta">⏱️ Tempo estimado: 15 min | 📱 WhatsApp: +55 91 99275-4425 | ✉️ clinica.ia.mentoria@gmail.com</div>
                     </div>
                 </div>
             </div>
@@ -1655,6 +1661,52 @@
             </div>
         </section>
 
+        <!-- Seção: Mentorados -->
+        <section id="mentorados" class="section" data-hide-for="mentorado">
+            <div class="section-header">
+                <h2 class="section-title">Gerenciar Mentorados</h2>
+                <p class="section-desc">Cadastre, edite e acompanhe seus mentorados.</p>
+            </div>
+
+            <div class="mentorados-grid">
+                <div class="ficha-section full">
+                    <h3>➕ Novo Mentorado</h3>
+                    <form id="formNovoMentorado" class="form-grid" style="margin-top:12px;">
+                        <div class="field-group">
+                            <label>Nome completo</label>
+                            <input type="text" id="m_nome" class="input" placeholder="Nome do mentorado" required>
+                        </div>
+                        <div class="field-group">
+                            <label>Email</label>
+                            <input type="email" id="m_email" class="input" placeholder="email@exemplo.com" required>
+                        </div>
+                        <div class="field-group">
+                            <label>Senha de acesso</label>
+                            <input type="text" id="m_senha" class="input" placeholder="Senha para login" required>
+                        </div>
+                        <div class="field-group">
+                            <label>Profissão/Nicho</label>
+                            <input type="text" id="m_nicho" class="input" placeholder="Ex: Farmácia Clínica">
+                        </div>
+                        <div class="field-group full">
+                            <label>Observações</label>
+                            <textarea id="m_obs" class="input" rows="2" placeholder="Notas sobre o mentorado..."></textarea>
+                        </div>
+                        <div class="field-group full">
+                            <button type="submit" class="btn">💾 Cadastrar Mentorado</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="ficha-section full">
+                    <h3>📋 Mentorados Cadastrados</h3>
+                    <div id="listaMentorados" class="mentorados-list" style="margin-top:12px;">
+                        <p style="color:var(--text-muted);font-size:.9rem;">Nenhum mentorado cadastrado ainda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Seção: Recursos -->
         <section id="recursos" class="section">
             <div class="section-header">
@@ -1681,7 +1733,7 @@
                         <div class="recurso-badge">Obrigatório</div>
                         <span class="recurso-icon">💬</span>
                         <h5>Canal de Suporte</h5>
-                        <p>WhatsApp</p>
+                        <p>WhatsApp: +55 91 99275-4425</p>
                     </div>
                     <div class="recurso-card obrigatorio">
                         <div class="recurso-badge">Obrigatório</div>
@@ -1796,6 +1848,36 @@
             </div>
         </section>
     </main>
+
+    <!-- Footer Contatos -->
+    <footer class="app-footer" id="appFooter">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="logo-icon">IA</span>
+                <div>
+                    <strong>clinica.IA</strong>
+                    <span>Mentoria Clínica com IA 1:1</span>
+                </div>
+            </div>
+            <div class="footer-links">
+                <a href="https://wa.me/5591992754425" target="_blank" class="footer-link">
+                    <span>📱</span> +55 91 99275-4425
+                </a>
+                <a href="mailto:clinica.ia.mentoria@gmail.com" class="footer-link">
+                    <span>✉️</span> clinica.ia.mentoria@gmail.com
+                </a>
+                <a href="https://www.clinicaia.ia.br" target="_blank" class="footer-link">
+                    <span>🌐</span> www.clinicaia.ia.br
+                </a>
+                <a href="https://instagram.com/clinica_ia" target="_blank" class="footer-link">
+                    <span>📸</span> @clinica_ia
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 clinica.IA — Método IA Pro+</p>
+        </div>
+    </footer>
 
     <!-- Toast Notification -->
     <div class="toast" id="toast">
