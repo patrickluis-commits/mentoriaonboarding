@@ -14,6 +14,46 @@
     <div class="bg-grid"></div>
     <div class="noise-overlay"></div>
 
+    <!-- Tela de Login -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-card">
+            <div class="login-brand">
+                <span class="login-logo">IA</span>
+                <h1>Mentoria Clínica</h1>
+                <p>Método IA Pro+</p>
+            </div>
+            <form id="loginForm" class="login-form">
+                <div class="field-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" class="input" placeholder="seu@email.com" required>
+                </div>
+                <div class="field-group">
+                    <label for="loginSenha">Senha</label>
+                    <input type="password" id="loginSenha" class="input" placeholder="••••••••" required>
+                </div>
+                <div class="field-group">
+                    <label>Tipo de Acesso</label>
+                    <div class="login-type-toggle">
+                        <label class="login-type-option active">
+                            <input type="radio" name="loginType" value="mentorado" checked>
+                            <span>🙋 Mentorado</span>
+                        </label>
+                        <label class="login-type-option">
+                            <input type="radio" name="loginType" value="mentor">
+                            <span>👨‍🏫 Mentor</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn--lg" style="width:100%;">Entrar</button>
+            </form>
+            <div class="login-hint">
+                <p><strong>Demo — Credenciais:</strong></p>
+                <p>👨‍🏫 Mentor: <code>mentor@clinica.ia</code> / <code>mentor123</code></p>
+                <p>🙋 Mentorado: <code>mentorado@clinica.ia</code> / <code>mentorado123</code></p>
+            </div>
+        </div>
+    </div>
+
     <!-- Overlay para menu mobile -->
     <div class="overlay" id="overlay"></div>
 
@@ -35,10 +75,10 @@
             <li><a href="#home" class="nav-link active" data-section="home"><span class="nav-icon">🏠</span> Início</a></li>
             <li><a href="#fluxo" class="nav-link" data-section="fluxo"><span class="nav-icon">🔄</span> Fluxo Operacional</a></li>
             <li><a href="#questionario" class="nav-link" data-section="questionario"><span class="nav-icon">📝</span> Diagnóstico</a></li>
-            <li><a href="#ficha" class="nav-link" data-section="ficha"><span class="nav-icon">📊</span> Ficha Estratégica</a></li>
+            <li><a href="#ficha" class="nav-link" data-section="ficha" data-hide-for="mentorado"><span class="nav-icon">📊</span> Ficha Estratégica</a></li>
             <li><a href="#kit" class="nav-link" data-section="kit"><span class="nav-icon">🎒</span> Kit Onboarding</a></li>
             <li><a href="#trilha" class="nav-link" data-section="trilha"><span class="nav-icon">🗓️</span> Trilha 5 Dias</a></li>
-            <li><a href="#indicadores" class="nav-link" data-section="indicadores"><span class="nav-icon">📈</span> Indicadores</a></li>
+            <li><a href="#indicadores" class="nav-link" data-section="indicadores" data-hide-for="mentorado"><span class="nav-icon">📈</span> Indicadores</a></li>
             <li><a href="#recursos" class="nav-link" data-section="recursos"><span class="nav-icon">🛠️</span> Recursos</a></li>
         </ul>
         <div class="sidebar-footer">
@@ -57,6 +97,7 @@
                 <span class="logo-icon">IA</span>
                 <span>Mentoria Clínica</span>
             </div>
+            <button class="btn-outline" id="btnLogoutMobile" style="color:var(--accent-neon);border-color:rgba(0,255,128,0.3);font-size:11px;padding:6px 10px;">⎋ Sair</button>
             <div class="theme-toggle" id="themeToggle" aria-label="Alternar tema">
                 <span class="theme-icon">🌙</span>
             </div>
@@ -67,6 +108,7 @@
             <h2 id="pageTitle">Início</h2>
             <div class="header-actions">
                 <button class="btn-outline" id="btnResetar">↺ Resetar Dados</button>
+                <button class="btn-outline" id="btnLogout" style="color:var(--accent-neon);border-color:rgba(0,255,128,0.3);">⎋ Sair</button>
                 <div class="theme-toggle" id="themeToggleDesktop" aria-label="Alternar tema">
                     <span class="theme-icon">🌙</span>
                 </div>
@@ -818,7 +860,7 @@
         </section>
 
         <!-- Seção: Ficha Estratégica -->
-        <section id="ficha" class="section">
+        <section id="ficha" class="section" data-hide-for="mentorado">
             <div class="section-header">
                 <h2 class="section-title">Ficha Estratégica do Mentorado</h2>
                 <p class="section-desc">Ficha-resumo de onboarding para análise estratégica do mentor.</p>
@@ -1394,7 +1436,7 @@
         </section>
 
         <!-- Seção: Indicadores -->
-        <section id="indicadores" class="section">
+        <section id="indicadores" class="section" data-hide-for="mentorado">
             <div class="section-header">
                 <h2 class="section-title">Indicadores e Avaliação</h2>
                 <p class="section-desc">Monitoramento do onboarding como processo de experiência e performance.</p>

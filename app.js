@@ -30,6 +30,117 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================================
+  // AUTENTICAÇÃO / LOGIN
+  // ==========================================================
+  const loginScreen = $('#loginScreen');
+  const loginForm = $('#loginForm');
+  const loginTypeOptions = $$('.login-type-option');
+
+  // Toggle visual do tipo de login
+  loginTypeOptions.forEach(opt => {
+    opt.addEventListener('click', () => {
+      loginTypeOptions.forEach(o => o.classList.remove('active'));
+      opt.classList.add('active');
+    });
+  });
+
+  const CREDENCIAIS = {
+    'mentor@clinica.ia': { senha: 'mentor123', tipo: 'mentor', nome: 'Mentor' },
+    'mentorado@clinica.ia': { senha: 'mentorado123', tipo: 'mentorado', nome: 'Mentorado' }
+  };
+
+  function aplicarPermissoes(tipo) {
+    document.body.classList.remove('is-mentor', 'is-mentorado');
+    document.body.classList.add(`is-${tipo}`);
+
+    // Ocultar links do menu restritos
+    $$('.nav-link[data-hide-for="mentorado"]').forEach(link => {
+      link.style.display = tipo === 'mentorado' ? 'none' : '';
+    });
+
+    // Ocultar seções restritas
+    $$('section[data-hide-for="mentorado"]').forEach(sec => {
+      sec.style.display = tipo === 'mentorado' ? 'none' : '';
+    });
+
+    // Badge no header
+    const headerActions = $('.desktop-header .header-actions');
+    const mobileHeader = $('.mobile-header');
+    const badgeClass = tipo === 'mentor' ? 'profile-badge--mentor' : 'profile-badge--mentorado';
+    const badgeText = tipo === 'mentor' ? '👨‍🏫 Mentor' : '🙋 Mentorado';
+
+    // Remove badge antigo se existir
+    $$('.profile-badge').forEach(b => b.remove());
+
+    if (headerActions) {
+      const badge = document.createElement('span');
+      badge.className = `profile-badge ${badgeClass}`;
+      badge.textContent = badgeText;
+      headerActions.insertBefore(badge, headerActions.firstChild);
+    }
+    if (mobileHeader) {
+      const badge = document.createElement('span');
+      badge.className = `profile-badge ${badgeClass}`;
+      badge.textContent = badgeText;
+      badge.style.cssText = 'margin-right:8px;';
+      mobileHeader.insertBefore(badge, $('#btnLogoutMobile'));
+    }
+  }
+
+  function fazerLogin(email, senha, tipo) {
+    const user = CREDENCIAIS[email.toLowerCase().trim()];
+    if (!user || user.senha !== senha) {
+      showToast('Email ou senha incorretos.', '❌');
+      return false;
+    }
+    if (user.tipo !== tipo) {
+      showToast(`Esta conta é de ${user.tipo}. Selecione o tipo correto.`, '⚠️');
+      return false;
+    }
+    saveLocal('session', { email: email.toLowerCase().trim(), tipo: user.tipo, nome: user.nome });
+    return true;
+  }
+
+  function fazerLogout() {
+    localStorage.removeItem('session');
+    location.reload();
+  }
+
+  function verificarSessao() {
+    const session = loadLocal('session', null);
+    if (!session) {
+      // Mostrar login
+      if (loginScreen) loginScreen.classList.remove('hidden');
+      return false;
+    }
+    // Esconder login e aplicar permissões
+    if (loginScreen) loginScreen.classList.add('hidden');
+    aplicarPermissoes(session.tipo);
+    return true;
+  }
+
+  if (loginForm) {
+    loginForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const email = $('#loginEmail').value;
+      const senha = $('#loginSenha').value;
+      const tipo = $('input[name="loginType"]:checked')?.value || 'mentorado';
+      if (fazerLogin(email, senha, tipo)) {
+        showToast(`Bem-vindo, ${tipo === 'mentor' ? 'Mentor' : 'Mentorado'}!`, '✅');
+        if (loginScreen) loginScreen.classList.add('hidden');
+        aplicarPermissoes(tipo);
+        // Mostrar primeira seção disponível
+        showSection('home');
+      }
+    });
+  }
+
+  $('#btnLogout')?.addEventListener('click', fazerLogout);
+  $('#btnLogoutMobile')?.addEventListener('click', fazerLogout);
+
+  const isLoggedIn = verificarSessao();
+
+  // ==========================================================
   // NAVEGAÇÃO ENTRE SEÇÕES
   // ==========================================================
   const sections = $$('.section');
@@ -37,10 +148,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const pageTitle = $('#pageTitle');
 
   function showSection(id) {
+    const session = loadLocal('session', null);
+    const target = $(`#${id}`);
+
+    // Verificar se a seção é restrita ao mentorado
+    if (target && target.dataset.hideFor === 'mentorado' && session && session.tipo === 'mentorado') {
+      showToast('Esta área é exclusiva do Mentor.', '🔒');
+      return;
+    }
+
     sections.forEach(sec => sec.classList.remove('active'));
     navLinks.forEach(link => link.classList.remove('active'));
 
-    const target = $(`#${id}`);
     if (target) target.classList.add('active');
 
     const nav = $(`.nav-link[data-section="${id}"]`);
