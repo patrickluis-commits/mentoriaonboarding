@@ -2038,3 +2038,99 @@ body.is-mentor .section[data-restrict="mentor"].active {
   .mentorado-card { flex-direction: column; align-items: flex-start; gap: 10px; }
   .mentorado-actions { width: 100%; justify-content: flex-end; }
 }
+
+/* ---- Botão Google Realista ---- */
+.btn-google {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  background: var(--white);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--navy-950);
+  cursor: pointer;
+  transition: all var(--duration-fast);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.btn-google:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transform: translateY(-1px);
+}
+
+.btn-google:active {
+  transform: translateY(0);
+}
+
+.btn-google-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* ---- Avatar do Usuário Logado ---- */
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .85rem;
+  color: var(--navy-950);
+  flex-shrink: 0;
+  box-shadow: var(--shadow-neon-sm);
+  margin-right: 8px;
+}
+
+.user-avatar--mentor {
+  background: var(--accent-neon);
+}
+
+.user-avatar--mentorado {
+  background: var(--accent-cyan);
+}
+
+.user-greeting {
+  font-size: .85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.user-greeting strong {
+  color: var(--text-primary);
+}
+
+/* Auto-detect badge no login */
+.auto-detect-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: .7rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  margin-left: 8px;
+  animation: fadeIn .3s ease;
+}
+
+.auto-detect-badge--mentor {
+  color: var(--accent-neon);
+  background: rgba(0, 255, 128, 0.1);
+  border: 1px solid rgba(0, 255, 128, 0.2);
+}
+
+.auto-detect-badge--mentorado {
+  color: var(--accent-cyan);
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+}

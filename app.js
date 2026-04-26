@@ -123,6 +123,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const loginScreen = $('#loginScreen');
   const loginForm = $('#loginForm');
   const loginTypeOptions = $$('.login-type-option');
+  const loginEmailInput = $('#loginEmail');
+  const tipoAcessoGroup = $('#tipoAcessoGroup');
 
   // Toggle visual do tipo de login
   loginTypeOptions.forEach(opt => {
@@ -135,6 +137,52 @@ document.addEventListener('DOMContentLoaded', () => {
   const CREDENCIAIS = {
     'mentor@clinica.ia': { senha: 'mentor123', tipo: 'mentor', nome: 'Mentor' }
   };
+
+  function detectarTipoPorEmail(email) {
+    const key = email.toLowerCase().trim();
+    if (!key) return null;
+    if (CREDENCIAIS[key]) return CREDENCIAIS[key].tipo;
+    const mentorados = getMentorados();
+    if (mentorados.some(m => m.email === key)) return 'mentorado';
+    return null;
+  }
+
+  function atualizarAutoDetect() {
+    const email = loginEmailInput.value;
+    const tipo = detectarTipoPorEmail(email);
+    const existingBadge = $('.auto-detect-badge');
+    if (existingBadge) existingBadge.remove();
+
+    if (tipo) {
+      // Oculta o seletor de tipo e mostra badge
+      if (tipoAcessoGroup) tipoAcessoGroup.style.display = 'none';
+      const badge = document.createElement('span');
+      badge.className = `auto-detect-badge auto-detect-badge--${tipo}`;
+      badge.textContent = tipo === 'mentor' ? '👨‍🏫 Mentor detectado' : '🙋 Mentorado detectado';
+      loginEmailInput.parentNode.appendChild(badge);
+
+      // Atualiza o radio correspondente
+      const radio = $(`input[name="loginType"][value="${tipo}"]`);
+      if (radio) {
+        radio.checked = true;
+        loginTypeOptions.forEach(o => o.classList.remove('active'));
+        radio.closest('.login-type-option')?.classList.add('active');
+      }
+    } else {
+      if (tipoAcessoGroup) tipoAcessoGroup.style.display = '';
+    }
+  }
+
+  if (loginEmailInput) {
+    loginEmailInput.addEventListener('input', atualizarAutoDetect);
+    loginEmailInput.addEventListener('blur', atualizarAutoDetect);
+    // Preenche último email usado
+    const ultimoEmail = loadLocal('ultimoEmail', '');
+    if (ultimoEmail) {
+      loginEmailInput.value = ultimoEmail;
+      atualizarAutoDetect();
+    }
+  }
 
   function aplicarPermissoes(tipo) {
     document.body.classList.remove('is-mentor', 'is-mentorado');
@@ -150,32 +198,38 @@ document.addEventListener('DOMContentLoaded', () => {
       sec.style.display = tipo === 'mentorado' ? 'none' : '';
     });
 
-    // Badge no header
+    // Avatar e saudação no header
+    const session = loadLocal('session', {});
+    const nome = session.nome || (tipo === 'mentor' ? 'Mentor' : 'Mentorado');
+    const inicial = (nome || 'U').charAt(0).toUpperCase();
+    const avatarClass = tipo === 'mentor' ? 'user-avatar--mentor' : 'user-avatar--mentorado';
+
     const headerActions = $('.desktop-header .header-actions');
     const mobileHeader = $('.mobile-header');
-    const badgeClass = tipo === 'mentor' ? 'profile-badge--mentor' : 'profile-badge--mentorado';
-    const badgeText = tipo === 'mentor' ? '👨‍🏫 Mentor' : '🙋 Mentorado';
 
-    // Remove badge antigo se existir
-    $$('.profile-badge').forEach(b => b.remove());
+    // Limpa elementos antigos
+    $$('.profile-badge, .user-avatar, .user-greeting').forEach(b => b.remove());
 
     if (headerActions) {
-      const badge = document.createElement('span');
-      badge.className = `profile-badge ${badgeClass}`;
-      badge.textContent = badgeText;
-      headerActions.insertBefore(badge, headerActions.firstChild);
+      const wrapper = document.createElement('div');
+      wrapper.style.cssText = 'display:flex;align-items:center;margin-right:auto;';
+      wrapper.innerHTML = `
+        <div class="user-avatar ${avatarClass}">${inicial}</div>
+        <span class="user-greeting">Olá, <strong>${nome}</strong></span>
+      `;
+      headerActions.insertBefore(wrapper, headerActions.firstChild);
     }
     if (mobileHeader) {
       const badge = document.createElement('span');
-      badge.className = `profile-badge ${badgeClass}`;
-      badge.textContent = badgeText;
-      badge.style.cssText = 'margin-right:8px;';
+      badge.className = `profile-badge ${tipo === 'mentor' ? 'profile-badge--mentor' : 'profile-badge--mentorado'}`;
+      badge.textContent = tipo === 'mentor' ? '👨‍🏫 Mentor' : '🙋 Mentorado';
       mobileHeader.insertBefore(badge, $('#btnLogoutMobile'));
     }
   }
 
   function criarSessao(email, tipo, nome) {
     saveLocal('session', { email: email.toLowerCase().trim(), tipo, nome });
+    saveLocal('ultimoEmail', email.toLowerCase().trim());
   }
 
   function fazerLogin(email, senha, tipo) {
@@ -183,10 +237,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Verifica credenciais fixas do mentor
     const fixed = CREDENCIAIS[key];
     if (fixed && fixed.senha === senha) {
-      if (tipo && fixed.tipo !== tipo) {
-        showToast(`Esta conta é de ${fixed.tipo}. Selecione o tipo correto.`, '⚠️');
-        return false;
-      }
       criarSessao(email, fixed.tipo, fixed.nome);
       return true;
     }
@@ -194,10 +244,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const mentorados = getMentorados();
     const found = mentorados.find(m => m.email === key && m.senha === senha);
     if (found) {
-      if (tipo && tipo !== 'mentorado') {
-        showToast('Mentorados devem entrar como Mentorado.', '⚠️');
-        return false;
-      }
       criarSessao(email, 'mentorado', found.nome);
       return true;
     }
@@ -241,89 +287,37 @@ document.addEventListener('DOMContentLoaded', () => {
   $('#btnLogoutMobile')?.addEventListener('click', fazerLogout);
 
   // ==========================================================
-  // LOGIN COM GOOGLE (Google Identity Services)
+  // LOGIN COM GOOGLE (Demo Realista)
   // ==========================================================
-  const GOOGLE_CLIENT_ID = ''; // << Substitua pelo seu Client ID do Google Cloud Console
+  $('#btnGoogleLogin')?.addEventListener('click', () => {
+    const email = prompt('🔷 Login com Google\n\nDigite o email da conta:');
+    if (!email) return;
+    const key = email.toLowerCase().trim();
 
-  function handleGoogleCredentialResponse(response) {
-    // Decodifica o JWT do Google para obter dados do usuário
-    const payload = JSON.parse(atob(response.credential.split('.')[1]));
-    const email = payload.email;
-    const nome = payload.name || payload.given_name || 'Usuário Google';
-
-    // Verifica se é mentorado cadastrado
-    const mentorados = getMentorados();
-    const found = mentorados.find(m => m.email.toLowerCase() === email.toLowerCase());
-    if (found) {
-      criarSessao(email, 'mentorado', found.nome);
-      showToast(`Bem-vindo, ${found.nome}!`, '✅');
-      if (loginScreen) loginScreen.classList.add('hidden');
-      aplicarPermissoes('mentorado');
-      showSection('home');
-      return;
-    }
-
-    // Se não encontrou, verifica se é o mentor
-    if (email.toLowerCase() === 'mentor@clinica.ia') {
+    // Verifica mentor
+    if (key === 'mentor@clinica.ia') {
       criarSessao(email, 'mentor', 'Mentor');
-      showToast('Bem-vindo, Mentor!', '✅');
+      showToast('Bem-vindo, Mentor! (Google)', '✅');
       if (loginScreen) loginScreen.classList.add('hidden');
       aplicarPermissoes('mentor');
       showSection('home');
       return;
     }
 
-    showToast('Este email não está cadastrado. Peça ao mentor para cadastrá-lo.', '❌');
-  }
-
-  function initGoogleSignIn() {
-    if (!GOOGLE_CLIENT_ID) {
-      // Modo demo: botão alternativo
-      const container = $('#g_id_signin');
-      if (container) {
-        container.innerHTML = '<button type="button" id="btnGoogleDemo" class="btn btn--secondary" style="width:100%;">🔷 Entrar com Google (Demo)</button>';
-        $('#btnGoogleDemo')?.addEventListener('click', () => {
-          const email = prompt('Simulação Google Login\n\nDigite o email do mentorado:');
-          if (!email) return;
-          const mentorados = getMentorados();
-          const found = mentorados.find(m => m.email.toLowerCase() === email.toLowerCase().trim());
-          if (found) {
-            criarSessao(email, 'mentorado', found.nome);
-            showToast(`Bem-vindo, ${found.nome}! (Google Demo)`, '✅');
-            if (loginScreen) loginScreen.classList.add('hidden');
-            aplicarPermissoes('mentorado');
-            showSection('home');
-          } else if (email.toLowerCase().trim() === 'mentor@clinica.ia') {
-            criarSessao(email, 'mentor', 'Mentor');
-            showToast('Bem-vindo, Mentor! (Google Demo)', '✅');
-            if (loginScreen) loginScreen.classList.add('hidden');
-            aplicarPermissoes('mentor');
-            showSection('home');
-          } else {
-            showToast('Email não cadastrado.', '❌');
-          }
-        });
-      }
+    // Verifica mentorados cadastrados
+    const mentorados = getMentorados();
+    const found = mentorados.find(m => m.email === key);
+    if (found) {
+      criarSessao(email, 'mentorado', found.nome);
+      showToast(`Bem-vindo, ${found.nome}! (Google)`, '✅');
+      if (loginScreen) loginScreen.classList.add('hidden');
+      aplicarPermissoes('mentorado');
+      showSection('home');
       return;
     }
 
-    // Inicializa o Google Identity Services real
-    if (window.google && google.accounts && google.accounts.id) {
-      google.accounts.id.initialize({
-        client_id: GOOGLE_CLIENT_ID,
-        callback: handleGoogleCredentialResponse,
-        auto_select: false,
-        cancel_on_tap_outside: true
-      });
-      google.accounts.id.renderButton(
-        document.getElementById('g_id_signin'),
-        { theme: 'filled_black', size: 'large', width: '100%', shape: 'pill', text: 'signin_with' }
-      );
-    }
-  }
-
-  // Tenta inicializar o Google Sign-In após um pequeno delay
-  setTimeout(initGoogleSignIn, 1000);
+    showToast('Este email não está cadastrado. Peça ao mentor para cadastrá-lo.', '❌');
+  });
 
   const isLoggedIn = verificarSessao();
 
